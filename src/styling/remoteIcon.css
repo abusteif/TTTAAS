@@ -1,0 +1,103 @@
+._mainPanel {
+  height:35px;
+  width:20px;
+  margin-left:28px;
+  margin-top:-3px;
+  background-color: rgb(89, 91, 91);
+  border-color: black;
+  border-radius: 10%;
+  position: absolute;
+  cursor: pointer;
+}
+
+._mainPanel:hover{
+  transform: scale(1.2);
+}
+
+._mainPanelHighlighted{
+  -webkit-box-shadow:  0 0 10px 1px blue;
+  box-shadow:          0 0 10px 1px blue;
+}
+
+._button{
+  width:5px;
+  height:2px;
+  background-color: rgb(21, 22, 22);
+  position: absolute;
+  border-radius: 20%;
+}
+
+._backButton{
+  left:2px;
+  top:5px;
+}
+
+._homeButton {
+  left:12px;
+  top:5px;
+}
+
+._upButton{
+  left:9px;
+  top:9px;
+  width:2px;
+  height:4px;
+  background-color: grey;
+}
+
+._downButton{
+  left:9px;
+  top:15px;
+  width:2px;
+  height:4px;
+  background-color: grey;
+
+}
+
+._leftButton{
+  left:4px;
+  top:13px;
+  background-color: grey;
+
+}
+
+._rightButton{
+  left:11px;
+  top:13px;
+  background-color: grey;
+
+}
+
+._okButton{
+  left:8px;
+  top:12px;
+  width:4px;
+  height:4px;
+  border-radius: 50%;
+  background-color: grey;
+
+}
+
+._starButton{
+  left:12px;
+  top:20px;
+}
+
+._undoButton{
+  left:2px;
+  top:20px;
+}
+
+._button1{
+  left:12px;
+  top:20px;
+}
+
+._button1{
+  left:12px;
+  top:25px;
+}
+._button2{
+  left:2px;
+  top:25px;
+}

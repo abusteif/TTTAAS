@@ -1,0 +1,73 @@
+.playOverlay {
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  top: 0px;
+
+  background: -moz-linear-gradient(
+    top,
+    #38383a 0%,
+    #272728 50%,
+    #111111 92%,
+    #38383a
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#38383a),
+    color-stop(0.5, #272728),
+    color-stop(0.92, #111111),
+    to(#383839)
+  );
+  border: 1px solid #38383a;
+  box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  text-shadow: 1px 1px 2px rgba(000, 000, 000, 0.7),
+    0px 1px 0px rgba(255, 255, 255, 0.4);
+}
+.refreshButton,
+.cameraButton {
+  width: 40px;
+  height: 40px;
+  border-bottom-right-radius: 15%;
+  padding-right: 2px;
+  position: absolute;
+  top: 0;
+  background: -moz-linear-gradient(
+    top,
+    #939496 0%,
+    #7f8082 50%,
+    #4f4f51 92%,
+    #939490
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#939496),
+    color-stop(0.5, #7f8082),
+    color-stop(0.92, #4f4f51),
+    to(#939490)
+  );
+}
+.videoLayout {
+  border: 5px groove;
+  width: 640px;
+  height: 480px;
+}
+.playIcon {
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  top: 150px;
+  left: 240px;
+}
+.cameraButton {
+  left: 42px;
+}
+.screenshot {
+  position: absolute;
+  width: 640px;
+  height: 480px;
+  border: solid 2px;
+}

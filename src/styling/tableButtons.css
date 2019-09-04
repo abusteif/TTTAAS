@@ -1,0 +1,147 @@
+.TBmainPanelArrowB {
+  position: absolute;
+  height:28px;
+  width:28px;
+  margin-left:23px;
+  margin-top: -3px;
+  border-radius: 10%;
+}
+
+.TBmainPanelArrowB:hover{
+  transform: scale(1.2);
+}
+
+.TBmainPanelControlB {
+  position: absolute;
+  height:18px;
+  width:38px;
+  margin-left:18px;
+  margin-top:2px;
+  border-radius: 10%;
+}
+
+.TBmainPanelControlB:hover {
+  transform: scale(1.2);
+}
+
+.TBmainPanelHighlighted{
+  -webkit-box-shadow:  0 0 10px 1px blue;
+  box-shadow:          0 0 10px 1px blue;
+
+}
+
+.TBenlargedButton{
+  transform: scale(1.2);
+}
+.TBhomeB{
+  top:-1px;
+  left:-1px;
+
+}
+
+.TBhomeB::before{
+  content:"\f015";
+  font-size: 20px;
+  top:-5px;
+  left:10px;
+}
+
+.TBbackB{
+  top:-1px;
+  left:-1px;
+
+}
+
+.TBbackB::before{
+  content:"\f177";
+  font-size: 20px;
+  top:-5px;
+  left:8px;
+}
+
+.TBupB,
+.TBdownB,
+.TBleftB,
+.TBrightB
+{
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  border-bottom-left-radius: 20%;
+  top:-1px;
+  left:-1px;
+
+
+}
+
+.TBupB::before{
+  content: "\f106";
+  left:5px;
+}
+
+
+
+.TBleftB::before{
+  content:"\f104";
+  top:-8px;
+  left:8px;
+}
+
+
+
+.TBrightB::before{
+  content:"\f105";
+  top:-8px;
+  left:10px;
+}
+
+
+
+.TBdownB::before{
+  content:"\f107";
+  top:-8px;
+  left:5px;
+}
+
+.TBundoB{
+  top:-1px;
+  left:-1px;
+
+}
+
+.TBundoB::before{
+  content:"\f0e2";
+  top:0px;
+  left:13px;
+  font-size: 13px
+}
+
+
+
+.TBstarB{
+  top:-1px;
+  left:-1px;
+
+}
+
+.TBstarB::before{
+  content:"\f069";
+  top:0px;
+  left:12px;
+  font-size: 13px
+}
+
+
+.TBokB {
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  font-style: normal;
+  font-family: Impact;
+
+
+  padding-top: 5px;
+  font-size: 15px;
+  background-color: grey;
+  color:#c2c6ce;
+}
