@@ -14,8 +14,8 @@ import RemoteControlPanel from "./remoteControlPanel";
 import "../styling/videoStream.css";
 import "../styling/expectedBehaviour.css";
 
-const streamCode = "testStream";
-const ip = "192.168.42.245";
+const streamCode = "teststream";
+const ip = "localhost";
 const port = "8000";
 
 class VideoStream extends Component {

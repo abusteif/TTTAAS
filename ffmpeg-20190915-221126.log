@@ -1,0 +1,1006 @@
+ffmpeg started on 2019-09-15 at 22:11:26
+Report written to "ffmpeg-20190915-221126.log"
+Command line:
+ffmpeg -f dshow -i "video=XI100DUSB-HDMI Video" -c:v libx264 -preset superfast -tune zerolatency -vf "scale=640:480,fps=fps=20" -report -f flv rtmp://127.0.0.1:1935/live/teststream
+ffmpeg version N-94324-g806ac7da69 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 9.1.1 (GCC) 20190716
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 30.100 / 56. 30.100
+  libavcodec     58. 53.101 / 58. 53.101
+  libavformat    58. 28.102 / 58. 28.102
+  libavdevice    58.  7.100 / 58.  7.100
+  libavfilter     7. 56.101 /  7. 56.101
+  libswscale      5.  4.101 /  5.  4.101
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Splitting the commandline.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'dshow'.
+Reading option '-i' ... matched as input url with argument 'video=XI100DUSB-HDMI Video'.
+Reading option '-c:v' ... matched as option 'c' (codec name) with argument 'libx264'.
+Reading option '-preset' ... matched as AVOption 'preset' with argument 'superfast'.
+Reading option '-tune' ... matched as AVOption 'tune' with argument 'zerolatency'.
+Reading option '-vf' ... matched as option 'vf' (set video filters) with argument 'scale=640:480,fps=fps=20'.
+Reading option '-report' ... matched as option 'report' (generate a report) with argument '1'.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'flv'.
+Reading option 'rtmp://127.0.0.1:1935/live/teststream' ... matched as output url.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option report (generate a report) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input url video=XI100DUSB-HDMI Video.
+Applying option f (force format) with argument dshow.
+Successfully parsed a group of options.
+Opening an input file: video=XI100DUSB-HDMI Video.
+[dshow @ 000001d9ad66ab00] Selecting pin Capture on video
+dshow passing through packet of type video size  1843200 timestamp 466848950000 orig timestamp 466848953044 graph timestamp 466848950000 diff -3044 XI100DUSB-HDMI Video
+[dshow @ 000001d9ad66ab00] All info found
+Input #0, dshow, from 'video=XI100DUSB-HDMI Video':
+  Duration: N/A, start: 46684.895000, bitrate: N/A
+    Stream #0:0, 1, 1/10000000: Video: rawvideo (YUY2 / 0x32595559), yuyv422, 1280x720, 60 fps, 60 tbr, 10000k tbn, 10000k tbc
+Successfully opened the file.
+Parsing a group of options: output url rtmp://127.0.0.1:1935/live/teststream.
+Applying option c:v (codec name) with argument libx264.
+Applying option vf (set video filters) with argument scale=640:480,fps=fps=20.
+Applying option f (force format) with argument flv.
+Successfully parsed a group of options.
+Opening an output file: rtmp://127.0.0.1:1935/live/teststream.
+[rtmp @ 000001d9ad673d80] No default whitelist set
+[tcp @ 000001d9ad676300] No default whitelist set
+[tcp @ 000001d9ad676300] Original list of addresses:
+[tcp @ 000001d9ad676300] Address 127.0.0.1 port 1935
+[tcp @ 000001d9ad676300] Interleaved list of addresses:
+[tcp @ 000001d9ad676300] Address 127.0.0.1 port 1935
+[tcp @ 000001d9ad676300] Starting connection attempt to 127.0.0.1 port 1935
+[tcp @ 000001d9ad676300] Successfully connected to 127.0.0.1 port 1935
+[rtmp @ 000001d9ad673d80] Handshaking...
+[rtmp @ 000001d9ad673d80] Type answer 3
+[rtmp @ 000001d9ad673d80] Server version 1.2.3.4
+[rtmp @ 000001d9ad673d80] Proto = rtmp, path = /live/teststream, app = live, fname = teststream
+[rtmp @ 000001d9ad673d80] Window acknowledgement size = 5000000
+[rtmp @ 000001d9ad673d80] Max sent, unacked = 5000000
+[rtmp @ 000001d9ad673d80] New incoming chunk size = 60000
+[rtmp @ 000001d9ad673d80] Releasing stream...
+[rtmp @ 000001d9ad673d80] FCPublish stream...
+[rtmp @ 000001d9ad673d80] Creating stream...
+[rtmp @ 000001d9ad673d80] Sending publish command for 'teststream'
+Successfully opened the file.
+Stream mapping:
+  Stream #0:0 -> #0:0 (rawvideo (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+cur_dts is invalid st:0 (0) [init:0 i_done:0 finish:0] (this is harmless if it occurs once at the start per stream)
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+detected 4 logical cores
+[Parsed_scale_0 @ 000001d9ad67b000] Setting 'w' to value '640'
+[Parsed_scale_0 @ 000001d9ad67b000] Setting 'h' to value '480'
+[Parsed_scale_0 @ 000001d9ad67b000] Setting 'flags' to value 'bicubic'
+[Parsed_scale_0 @ 000001d9ad67b000] w:640 h:480 flags:'bicubic' interl:0
+[Parsed_fps_1 @ 000001d9ad67b100] Setting 'fps' to value '20'
+[Parsed_fps_1 @ 000001d9ad67b100] fps=20/1
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'video_size' to value '1280x720'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'pix_fmt' to value '1'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'time_base' to value '1/10000000'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'pixel_aspect' to value '0/1'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'sws_param' to value 'flags=2'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] Setting 'frame_rate' to value '10000000/166667'
+[graph 0 input from stream 0:0 @ 000001d9ad67b3c0] w:1280 h:720 pixfmt:yuyv422 tb:1/10000000 fr:10000000/166667 sar:0/1 sws_param:flags=2
+[format @ 000001d9ad684740] Setting 'pix_fmts' to value 'yuv420p|yuvj420p|yuv422p|yuvj422p|yuv444p|yuvj444p|nv12|nv16|nv21|yuv420p10le|yuv422p10le|yuv444p10le|nv20le|gray|gray10le'
+[AVFilterGraph @ 000001d9ad689e80] query_formats: 5 queried, 4 merged, 0 already done, 0 delayed
+[Parsed_scale_0 @ 000001d9ad67b000] picking yuv422p out of 13 ref:yuyv422 alpha:0
+[Parsed_scale_0 @ 000001d9ad67b000] w:1280 h:720 fmt:yuyv422 sar:0/1 -> w:640 h:480 fmt:yuv422p sar:0/1 flags:0x4
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 0, out pts 0
+[libx264 @ 000001d9ad672ac0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 000001d9ad672ac0] profile High 4:2:2, level 3.0, 4:2:2, 8-bit
+[libx264 @ 000001d9ad672ac0] 264 - core 157 r2970 5493be8 - H.264/MPEG-4 AVC codec - Copyleft 2003-2019 - http://www.videolan.org/x264.html - options: cabac=1 ref=1 deblock=1:0:0 analyse=0x3:0x3 me=dia subme=1 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=0 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=0 threads=4 lookahead_threads=4 sliced_threads=1 slices=4 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=0 weightp=1 keyint=250 keyint_min=20 scenecut=40 intra_refresh=0 rc=crf mbtree=0 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, flv, to 'rtmp://127.0.0.1:1935/live/teststream':
+  Metadata:
+    encoder         : Lavf58.28.102
+    Stream #0:0, 0, 1/1000: Video: h264 (libx264) ([7][0][0][0] / 0x0007), yuv422p, 640x480, q=-1--1, 20 fps, 1k tbn, 20 tbc
+    Metadata:
+      encoder         : Lavc58.53.101 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+cur_dts is invalid st:0 (0) [init:1 i_done:0 finish:0] (this is harmless if it occurs once at the start per stream)
+cur_dts is invalid st:0 (0) [init:1 i_done:0 finish:0] (this is harmless if it occurs once at the start per stream)
+dshow passing through packet of type video size  1843200 timestamp 466849360000 orig timestamp 466849119761 graph timestamp 466849360000 diff 240239 XI100DUSB-HDMI Video
+cur_dts is invalid st:0 (0) [init:1 i_done:0 finish:0] (this is harmless if it occurs once at the start per stream)
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 410000, out pts 1
+[Parsed_fps_1 @ 000001d9ad67b100] Set first pts to 0
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 0 to pts 0
+Clipping frame in rate conversion by 0.000008
+[libx264 @ 000001d9ad672ac0] frame=   0 QP=13.51 NAL=3 Slice:I Poc:0   I:1200 P:0    SKIP:0    size=10268 bytes
+dshow passing through packet of type video size  1843200 timestamp 466849770000 orig timestamp 466849286478 graph timestamp 466849770000 diff 483522 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 820000, out pts 2
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 1 to pts 1
+[libx264 @ 000001d9ad672ac0] frame=   1 QP=12.50 NAL=2 Slice:P Poc:2   I:140  P:403  SKIP:657  size=2046 bytes
+dshow passing through packet of type video size  1843200 timestamp 466850170000 orig timestamp 466849453195 graph timestamp 466850170000 diff 716805 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 1220000, out pts 2
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 2
+dshow passing through packet of type video size  1843200 timestamp 466850580000 orig timestamp 466849619912 graph timestamp 466850580000 diff 960088 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 1630000, out pts 3
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 2 to pts 2
+[libx264 @ 000001d9ad672ac0] frame=   2 QP=10.75 NAL=2 Slice:P Poc:4   I:92   P:624  SKIP:484  size=3616 bytes
+dshow passing through packet of type video size  1843200 timestamp 466850980000 orig timestamp 466849786629 graph timestamp 466850980000 diff 1193371 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 2030000, out pts 4
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 3 to pts 3
+[libx264 @ 000001d9ad672ac0] frame=   3 QP=9.45 NAL=2 Slice:P Poc:6   I:49   P:837  SKIP:314  size=6348 bytes
+dshow passing through packet of type video size  1843200 timestamp 466851390000 orig timestamp 466849953346 graph timestamp 466851390000 diff 1436654 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 2440000, out pts 5
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 4 to pts 4
+[libx264 @ 000001d9ad672ac0] frame=   4 QP=8.48 NAL=2 Slice:P Poc:8   I:16   P:946  SKIP:238  size=9396 bytes
+dshow passing through packet of type video size  1843200 timestamp 466851800000 orig timestamp 466850120063 graph timestamp 466851800000 diff 1679937 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 2850000, out pts 6
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 5 to pts 5
+[libx264 @ 000001d9ad672ac0] frame=   5 QP=8.12 NAL=2 Slice:P Poc:10  I:6    P:736  SKIP:458  size=7024 bytes
+dshow passing through packet of type video size  1843200 timestamp 466852200000 orig timestamp 466850286780 graph timestamp 466852200000 diff 1913220 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 3250000, out pts 7
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 6 to pts 6
+[libx264 @ 000001d9ad672ac0] frame=   6 QP=7.40 NAL=2 Slice:P Poc:12  I:3    P:656  SKIP:541  size=4979 bytes
+dshow passing through packet of type video size  1843200 timestamp 466852610000 orig timestamp 466850453497 graph timestamp 466852610000 diff 2156503 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 3660000, out pts 7
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 7
+dshow passing through packet of type video size  1843200 timestamp 466853010000 orig timestamp 466850620214 graph timestamp 466853010000 diff 2389786 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 4060000, out pts 8
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 7 to pts 7
+[libx264 @ 000001d9ad672ac0] frame=   7 QP=7.32 NAL=2 Slice:P Poc:14  I:1    P:562  SKIP:637  size=4348 bytes
+dshow passing through packet of type video size  1843200 timestamp 466853410000 orig timestamp 466850786931 graph timestamp 466853410000 diff 2623069 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 4460000, out pts 9
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 8 to pts 8
+[libx264 @ 000001d9ad672ac0] frame=   8 QP=7.15 NAL=2 Slice:P Poc:16  I:1    P:518  SKIP:681  size=3693 bytes
+dshow passing through packet of type video size  1843200 timestamp 466853830000 orig timestamp 466850953648 graph timestamp 466853830000 diff 2876352 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 4880000, out pts 10
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 9 to pts 9
+[libx264 @ 000001d9ad672ac0] frame=   9 QP=7.14 NAL=2 Slice:P Poc:18  I:0    P:400  SKIP:800  size=1786 bytes
+frame=   10 fps=0.0 q=14.0 size=      53kB time=00:00:00.45 bitrate= 968.9kbits/s speed=0.897x    dshow passing through packet of type video size  1843200 timestamp 466854230000 orig timestamp 466851120365 graph timestamp 466854230000 diff 3109635 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 5280000, out pts 11
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 10 to pts 10
+[libx264 @ 000001d9ad672ac0] frame=  10 QP=7.25 NAL=2 Slice:P Poc:20  I:0    P:441  SKIP:759  size=3087 bytes
+dshow passing through packet of type video size  1843200 timestamp 466854640000 orig timestamp 466851287082 graph timestamp 466854640000 diff 3352918 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 5690000, out pts 11
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 11
+dshow passing through packet of type video size  1843200 timestamp 466855040000 orig timestamp 466851453799 graph timestamp 466855040000 diff 3586201 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 6090000, out pts 12
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 11 to pts 11
+[libx264 @ 000001d9ad672ac0] frame=  11 QP=7.30 NAL=2 Slice:P Poc:22  I:0    P:293  SKIP:907  size=1128 bytes
+dshow passing through packet of type video size  1843200 timestamp 466855440000 orig timestamp 466851620516 graph timestamp 466855440000 diff 3819484 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 6490000, out pts 13
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 12 to pts 12
+[libx264 @ 000001d9ad672ac0] frame=  12 QP=7.26 NAL=2 Slice:P Poc:24  I:0    P:282  SKIP:918  size=1109 bytes
+dshow passing through packet of type video size  1843200 timestamp 466855850000 orig timestamp 466851787233 graph timestamp 466855850000 diff 4062767 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 6900000, out pts 14
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 13 to pts 13
+[libx264 @ 000001d9ad672ac0] frame=  13 QP=7.24 NAL=2 Slice:P Poc:26  I:0    P:271  SKIP:929  size=1008 bytes
+dshow passing through packet of type video size  1843200 timestamp 466856260000 orig timestamp 466851953950 graph timestamp 466856260000 diff 4306050 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 7310000, out pts 15
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 14 to pts 14
+[libx264 @ 000001d9ad672ac0] frame=  14 QP=7.24 NAL=2 Slice:P Poc:28  I:0    P:271  SKIP:929  size=998 bytes
+dshow passing through packet of type video size  1843200 timestamp 466856660000 orig timestamp 466852120667 graph timestamp 466856660000 diff 4539333 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 7710000, out pts 15
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 15
+dshow passing through packet of type video size  1843200 timestamp 466857060000 orig timestamp 466852287384 graph timestamp 466857060000 diff 4772616 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 8110000, out pts 16
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 15 to pts 15
+[libx264 @ 000001d9ad672ac0] frame=  15 QP=7.24 NAL=2 Slice:P Poc:30  I:0    P:269  SKIP:931  size=987 bytes
+dshow passing through packet of type video size  1843200 timestamp 466857470000 orig timestamp 466852454101 graph timestamp 466857470000 diff 5015899 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 8520000, out pts 17
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 16 to pts 16
+[libx264 @ 000001d9ad672ac0] frame=  16 QP=7.24 NAL=2 Slice:P Poc:32  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466857880000 orig timestamp 466852620818 graph timestamp 466857880000 diff 5259182 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 8930000, out pts 18
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 17 to pts 17
+[libx264 @ 000001d9ad672ac0] frame=  17 QP=7.24 NAL=2 Slice:P Poc:34  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466858280000 orig timestamp 466852787535 graph timestamp 466858280000 diff 5492465 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 9330000, out pts 19
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 18 to pts 18
+[libx264 @ 000001d9ad672ac0] frame=  18 QP=7.24 NAL=2 Slice:P Poc:36  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466858690000 orig timestamp 466852954252 graph timestamp 466858690000 diff 5735748 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 9740000, out pts 19
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 19
+dshow passing through packet of type video size  1843200 timestamp 466859100000 orig timestamp 466853120969 graph timestamp 466859100000 diff 5979031 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 10150000, out pts 20
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 19 to pts 19
+[libx264 @ 000001d9ad672ac0] frame=  19 QP=7.24 NAL=2 Slice:P Poc:38  I:0    P:268  SKIP:932  size=980 bytes
+frame=   20 fps= 20 q=14.0 size=      66kB time=00:00:00.95 bitrate= 564.3kbits/s speed=0.942x    dshow passing through packet of type video size  1843200 timestamp 466859500000 orig timestamp 466853287686 graph timestamp 466859500000 diff 6212314 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 10550000, out pts 21
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 20 to pts 20
+[libx264 @ 000001d9ad672ac0] frame=  20 QP=7.24 NAL=2 Slice:P Poc:40  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466859910000 orig timestamp 466853454403 graph timestamp 466859910000 diff 6455597 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 10960000, out pts 22
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 21 to pts 21
+[libx264 @ 000001d9ad672ac0] frame=  21 QP=7.24 NAL=2 Slice:P Poc:42  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466860320000 orig timestamp 466853621120 graph timestamp 466860320000 diff 6698880 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 11370000, out pts 23
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 22 to pts 22
+[libx264 @ 000001d9ad672ac0] frame=  22 QP=7.24 NAL=2 Slice:P Poc:44  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466860720000 orig timestamp 466853787837 graph timestamp 466860720000 diff 6932163 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 11770000, out pts 24
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 23 to pts 23
+[libx264 @ 000001d9ad672ac0] frame=  23 QP=7.24 NAL=2 Slice:P Poc:46  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466861130000 orig timestamp 466853954554 graph timestamp 466861130000 diff 7175446 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 12180000, out pts 24
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 24
+dshow passing through packet of type video size  1843200 timestamp 466861530000 orig timestamp 466854121271 graph timestamp 466861530000 diff 7408729 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 12580000, out pts 25
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 24 to pts 24
+[libx264 @ 000001d9ad672ac0] frame=  24 QP=7.24 NAL=2 Slice:P Poc:48  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466861940000 orig timestamp 466854287988 graph timestamp 466861940000 diff 7652012 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 12990000, out pts 26
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 25 to pts 25
+[libx264 @ 000001d9ad672ac0] frame=  25 QP=7.24 NAL=2 Slice:P Poc:50  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466862340000 orig timestamp 466854454705 graph timestamp 466862340000 diff 7885295 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 13390000, out pts 27
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 26 to pts 26
+[libx264 @ 000001d9ad672ac0] frame=  26 QP=7.24 NAL=2 Slice:P Poc:52  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466862740000 orig timestamp 466854621422 graph timestamp 466862740000 diff 8118578 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 13790000, out pts 28
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 27 to pts 27
+[libx264 @ 000001d9ad672ac0] frame=  27 QP=7.24 NAL=2 Slice:P Poc:54  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466863150000 orig timestamp 466854788139 graph timestamp 466863150000 diff 8361861 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 14200000, out pts 28
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 28
+dshow passing through packet of type video size  1843200 timestamp 466863560000 orig timestamp 466854954856 graph timestamp 466863560000 diff 8605144 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 14610000, out pts 29
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 28 to pts 28
+[libx264 @ 000001d9ad672ac0] frame=  28 QP=7.24 NAL=2 Slice:P Poc:56  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466863970000 orig timestamp 466855121573 graph timestamp 466863970000 diff 8848427 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 15020000, out pts 30
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 29 to pts 29
+[libx264 @ 000001d9ad672ac0] frame=  29 QP=7.24 NAL=2 Slice:P Poc:58  I:0    P:268  SKIP:932  size=980 bytes
+frame=   30 fps= 20 q=14.0 size=      75kB time=00:00:01.45 bitrate= 425.1kbits/s speed=0.961x    dshow passing through packet of type video size  1843200 timestamp 466864370000 orig timestamp 466855288290 graph timestamp 466864370000 diff 9081710 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 15420000, out pts 31
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 30 to pts 30
+[libx264 @ 000001d9ad672ac0] frame=  30 QP=7.24 NAL=2 Slice:P Poc:60  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466864780000 orig timestamp 466855455007 graph timestamp 466864780000 diff 9324993 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 15830000, out pts 32
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 31 to pts 31
+[libx264 @ 000001d9ad672ac0] frame=  31 QP=7.24 NAL=2 Slice:P Poc:62  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466865180000 orig timestamp 466855621724 graph timestamp 466865180000 diff 9558276 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 16230000, out pts 32
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 32
+dshow passing through packet of type video size  1843200 timestamp 466865580000 orig timestamp 466855788441 graph timestamp 466865580000 diff 9791559 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 16630000, out pts 33
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 32 to pts 32
+[libx264 @ 000001d9ad672ac0] frame=  32 QP=7.24 NAL=2 Slice:P Poc:64  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466865990000 orig timestamp 466855955158 graph timestamp 466865990000 diff 10034842 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 17040000, out pts 34
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 33 to pts 33
+[libx264 @ 000001d9ad672ac0] frame=  33 QP=7.24 NAL=2 Slice:P Poc:66  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466866400000 orig timestamp 466856121875 graph timestamp 466866400000 diff 10278125 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 17450000, out pts 35
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 34 to pts 34
+[libx264 @ 000001d9ad672ac0] frame=  34 QP=7.24 NAL=2 Slice:P Poc:68  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466866800000 orig timestamp 466856288592 graph timestamp 466866800000 diff 10511408 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 17850000, out pts 36
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 35 to pts 35
+[libx264 @ 000001d9ad672ac0] frame=  35 QP=7.24 NAL=2 Slice:P Poc:70  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466867210000 orig timestamp 466856455309 graph timestamp 466867210000 diff 10754691 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 18260000, out pts 37
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 36 to pts 36
+[libx264 @ 000001d9ad672ac0] frame=  36 QP=7.24 NAL=2 Slice:P Poc:72  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466867610000 orig timestamp 466856622026 graph timestamp 466867610000 diff 10987974 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 18660000, out pts 37
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 37
+dshow passing through packet of type video size  1843200 timestamp 466868010000 orig timestamp 466856788743 graph timestamp 466868010000 diff 11221257 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 19060000, out pts 38
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 37 to pts 37
+[libx264 @ 000001d9ad672ac0] frame=  37 QP=7.24 NAL=2 Slice:P Poc:74  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466868420000 orig timestamp 466856955460 graph timestamp 466868420000 diff 11464540 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 19470000, out pts 39
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 38 to pts 38
+[libx264 @ 000001d9ad672ac0] frame=  38 QP=7.24 NAL=2 Slice:P Poc:76  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466868830000 orig timestamp 466857122177 graph timestamp 466868830000 diff 11707823 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 19880000, out pts 40
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 39 to pts 39
+[libx264 @ 000001d9ad672ac0] frame=  39 QP=7.24 NAL=2 Slice:P Poc:78  I:0    P:268  SKIP:932  size=980 bytes
+frame=   40 fps= 20 q=14.0 size=      85kB time=00:00:01.95 bitrate= 357.3kbits/s speed=0.97x    dshow passing through packet of type video size  1843200 timestamp 466869230000 orig timestamp 466857288894 graph timestamp 466869230000 diff 11941106 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 20280000, out pts 41
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 40 to pts 40
+[libx264 @ 000001d9ad672ac0] frame=  40 QP=7.24 NAL=2 Slice:P Poc:80  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466869640000 orig timestamp 466857455611 graph timestamp 466869640000 diff 12184389 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 20690000, out pts 41
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 41
+dshow passing through packet of type video size  1843200 timestamp 466870040000 orig timestamp 466857622328 graph timestamp 466870040000 diff 12417672 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 21090000, out pts 42
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 41 to pts 41
+[libx264 @ 000001d9ad672ac0] frame=  41 QP=7.24 NAL=2 Slice:P Poc:82  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466870440000 orig timestamp 466857789045 graph timestamp 466870440000 diff 12650955 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 21490000, out pts 43
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 42 to pts 42
+[libx264 @ 000001d9ad672ac0] frame=  42 QP=7.24 NAL=2 Slice:P Poc:84  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466870860000 orig timestamp 466857955762 graph timestamp 466870860000 diff 12904238 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 21910000, out pts 44
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 43 to pts 43
+[libx264 @ 000001d9ad672ac0] frame=  43 QP=7.24 NAL=2 Slice:P Poc:86  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466871260000 orig timestamp 466858122479 graph timestamp 466871260000 diff 13137521 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 22310000, out pts 45
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 44 to pts 44
+[libx264 @ 000001d9ad672ac0] frame=  44 QP=7.24 NAL=2 Slice:P Poc:88  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466871670000 orig timestamp 466858289196 graph timestamp 466871670000 diff 13380804 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 22720000, out pts 45
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 45
+dshow passing through packet of type video size  1843200 timestamp 466872070000 orig timestamp 466858455913 graph timestamp 466872070000 diff 13614087 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 23120000, out pts 46
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 45 to pts 45
+[libx264 @ 000001d9ad672ac0] frame=  45 QP=7.24 NAL=2 Slice:P Poc:90  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466872470000 orig timestamp 466858622630 graph timestamp 466872470000 diff 13847370 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 23520000, out pts 47
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 46 to pts 46
+[libx264 @ 000001d9ad672ac0] frame=  46 QP=7.24 NAL=2 Slice:P Poc:92  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466872880000 orig timestamp 466858789347 graph timestamp 466872880000 diff 14090653 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 23930000, out pts 48
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 47 to pts 47
+[libx264 @ 000001d9ad672ac0] frame=  47 QP=7.24 NAL=2 Slice:P Poc:94  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466873290000 orig timestamp 466858956064 graph timestamp 466873290000 diff 14333936 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 24340000, out pts 49
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 48 to pts 48
+[libx264 @ 000001d9ad672ac0] frame=  48 QP=7.24 NAL=2 Slice:P Poc:96  I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466873700000 orig timestamp 466859122781 graph timestamp 466873700000 diff 14577219 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 24750000, out pts 50
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 49 to pts 49
+[libx264 @ 000001d9ad672ac0] frame=  49 QP=7.24 NAL=2 Slice:P Poc:98  I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466874100000 orig timestamp 466859289498 graph timestamp 466874100000 diff 14810502 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 25150000, out pts 50
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 50
+frame=   50 fps= 20 q=14.0 size=      95kB time=00:00:02.45 bitrate= 317.1kbits/s speed=0.975x    dshow passing through packet of type video size  1843200 timestamp 466874500000 orig timestamp 466859456215 graph timestamp 466874500000 diff 15043785 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 25550000, out pts 51
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 50 to pts 50
+[libx264 @ 000001d9ad672ac0] frame=  50 QP=7.24 NAL=2 Slice:P Poc:100 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466874910000 orig timestamp 466859622932 graph timestamp 466874910000 diff 15287068 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 25960000, out pts 52
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 51 to pts 51
+[libx264 @ 000001d9ad672ac0] frame=  51 QP=7.24 NAL=2 Slice:P Poc:102 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466875310000 orig timestamp 466859789649 graph timestamp 466875310000 diff 15520351 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 26360000, out pts 53
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 52 to pts 52
+[libx264 @ 000001d9ad672ac0] frame=  52 QP=7.24 NAL=2 Slice:P Poc:104 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466875720000 orig timestamp 466859956366 graph timestamp 466875720000 diff 15763634 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 26770000, out pts 54
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 53 to pts 53
+[libx264 @ 000001d9ad672ac0] frame=  53 QP=7.24 NAL=2 Slice:P Poc:106 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466876120000 orig timestamp 466860123083 graph timestamp 466876120000 diff 15996917 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 27170000, out pts 54
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 54
+dshow passing through packet of type video size  1843200 timestamp 466876530000 orig timestamp 466860289800 graph timestamp 466876530000 diff 16240200 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 27580000, out pts 55
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 54 to pts 54
+[libx264 @ 000001d9ad672ac0] frame=  54 QP=7.24 NAL=2 Slice:P Poc:108 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466876940000 orig timestamp 466860456517 graph timestamp 466876940000 diff 16483483 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 27990000, out pts 56
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 55 to pts 55
+[libx264 @ 000001d9ad672ac0] frame=  55 QP=7.24 NAL=2 Slice:P Poc:110 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466877350000 orig timestamp 466860623234 graph timestamp 466877350000 diff 16726766 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 28400000, out pts 57
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 56 to pts 56
+[libx264 @ 000001d9ad672ac0] frame=  56 QP=7.24 NAL=2 Slice:P Poc:112 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466877750000 orig timestamp 466860789951 graph timestamp 466877750000 diff 16960049 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 28800000, out pts 58
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 57 to pts 57
+[libx264 @ 000001d9ad672ac0] frame=  57 QP=7.24 NAL=2 Slice:P Poc:114 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466878160000 orig timestamp 466860956668 graph timestamp 466878160000 diff 17203332 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 29210000, out pts 58
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 58
+dshow passing through packet of type video size  1843200 timestamp 466878560000 orig timestamp 466861123385 graph timestamp 466878560000 diff 17436615 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 29610000, out pts 59
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 58 to pts 58
+[libx264 @ 000001d9ad672ac0] frame=  58 QP=7.24 NAL=2 Slice:P Poc:116 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466878970000 orig timestamp 466861290102 graph timestamp 466878970000 diff 17679898 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 30020000, out pts 60
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 59 to pts 59
+[libx264 @ 000001d9ad672ac0] frame=  59 QP=7.24 NAL=2 Slice:P Poc:118 I:0    P:268  SKIP:932  size=980 bytes
+frame=   60 fps= 20 q=14.0 size=     105kB time=00:00:02.95 bitrate= 290.5kbits/s speed=0.979x    dshow passing through packet of type video size  1843200 timestamp 466879370000 orig timestamp 466861456819 graph timestamp 466879370000 diff 17913181 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 30420000, out pts 61
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 60 to pts 60
+[libx264 @ 000001d9ad672ac0] frame=  60 QP=7.24 NAL=2 Slice:P Poc:120 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466879780000 orig timestamp 466861623536 graph timestamp 466879780000 diff 18156464 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 30830000, out pts 62
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 61 to pts 61
+[libx264 @ 000001d9ad672ac0] frame=  61 QP=7.24 NAL=2 Slice:P Poc:122 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466880180000 orig timestamp 466861790253 graph timestamp 466880180000 diff 18389747 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 31230000, out pts 62
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 62
+dshow passing through packet of type video size  1843200 timestamp 466880590000 orig timestamp 466861956970 graph timestamp 466880590000 diff 18633030 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 31640000, out pts 63
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 62 to pts 62
+[libx264 @ 000001d9ad672ac0] frame=  62 QP=7.24 NAL=2 Slice:P Poc:124 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466881000000 orig timestamp 466862123687 graph timestamp 466881000000 diff 18876313 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 32050000, out pts 64
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 63 to pts 63
+[libx264 @ 000001d9ad672ac0] frame=  63 QP=7.24 NAL=2 Slice:P Poc:126 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466881390000 orig timestamp 466862290404 graph timestamp 466881390000 diff 19099596 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 32440000, out pts 65
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 64 to pts 64
+[libx264 @ 000001d9ad672ac0] frame=  64 QP=7.24 NAL=2 Slice:P Poc:128 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466881800000 orig timestamp 466862457121 graph timestamp 466881800000 diff 19342879 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 32850000, out pts 66
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 65 to pts 65
+[libx264 @ 000001d9ad672ac0] frame=  65 QP=7.24 NAL=2 Slice:P Poc:130 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466882210000 orig timestamp 466862623838 graph timestamp 466882210000 diff 19586162 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 33260000, out pts 67
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 66 to pts 66
+[libx264 @ 000001d9ad672ac0] frame=  66 QP=7.24 NAL=2 Slice:P Poc:132 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466882620000 orig timestamp 466862790555 graph timestamp 466882620000 diff 19829445 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 33670000, out pts 67
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 67
+dshow passing through packet of type video size  1843200 timestamp 466883020000 orig timestamp 466862957272 graph timestamp 466883020000 diff 20062728 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 34070000, out pts 68
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 67 to pts 67
+[libx264 @ 000001d9ad672ac0] frame=  67 QP=7.24 NAL=2 Slice:P Poc:134 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466883430000 orig timestamp 466863123989 graph timestamp 466883430000 diff 20306011 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 34480000, out pts 69
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 68 to pts 68
+[libx264 @ 000001d9ad672ac0] frame=  68 QP=7.24 NAL=2 Slice:P Poc:136 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466883830000 orig timestamp 466863290706 graph timestamp 466883830000 diff 20539294 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 34880000, out pts 70
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 69 to pts 69
+[libx264 @ 000001d9ad672ac0] frame=  69 QP=7.24 NAL=2 Slice:P Poc:138 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466884240000 orig timestamp 466863457423 graph timestamp 466884240000 diff 20782577 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 35290000, out pts 71
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 70 to pts 70
+[libx264 @ 000001d9ad672ac0] frame=  70 QP=7.24 NAL=2 Slice:P Poc:140 I:0    P:268  SKIP:932  size=978 bytes
+frame=   71 fps= 20 q=14.0 size=     115kB time=00:00:03.50 bitrate= 270.1kbits/s speed=0.995x    dshow passing through packet of type video size  1843200 timestamp 466884640000 orig timestamp 466863624140 graph timestamp 466884640000 diff 21015860 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 35690000, out pts 71
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 71
+dshow passing through packet of type video size  1843200 timestamp 466885040000 orig timestamp 466863790857 graph timestamp 466885040000 diff 21249143 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 36090000, out pts 72
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 71 to pts 71
+[libx264 @ 000001d9ad672ac0] frame=  71 QP=7.24 NAL=2 Slice:P Poc:142 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466885450000 orig timestamp 466863957574 graph timestamp 466885450000 diff 21492426 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 36500000, out pts 73
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 72 to pts 72
+[libx264 @ 000001d9ad672ac0] frame=  72 QP=7.24 NAL=2 Slice:P Poc:144 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466885860000 orig timestamp 466864124291 graph timestamp 466885860000 diff 21735709 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 36910000, out pts 74
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 73 to pts 73
+[libx264 @ 000001d9ad672ac0] frame=  73 QP=7.24 NAL=2 Slice:P Poc:146 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466886260000 orig timestamp 466864291008 graph timestamp 466886260000 diff 21968992 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 37310000, out pts 75
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 74 to pts 74
+[libx264 @ 000001d9ad672ac0] frame=  74 QP=7.24 NAL=2 Slice:P Poc:148 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466886670000 orig timestamp 466864457725 graph timestamp 466886670000 diff 22212275 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 37720000, out pts 75
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 75
+dshow passing through packet of type video size  1843200 timestamp 466887070000 orig timestamp 466864624442 graph timestamp 466887070000 diff 22445558 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 38120000, out pts 76
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 75 to pts 75
+[libx264 @ 000001d9ad672ac0] frame=  75 QP=7.24 NAL=2 Slice:P Poc:150 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466887480000 orig timestamp 466864791159 graph timestamp 466887480000 diff 22688841 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 38530000, out pts 77
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 76 to pts 76
+[libx264 @ 000001d9ad672ac0] frame=  76 QP=7.24 NAL=2 Slice:P Poc:152 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466887880000 orig timestamp 466864957876 graph timestamp 466887880000 diff 22922124 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 38930000, out pts 78
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 77 to pts 77
+[libx264 @ 000001d9ad672ac0] frame=  77 QP=7.24 NAL=2 Slice:P Poc:154 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466888290000 orig timestamp 466865124593 graph timestamp 466888290000 diff 23165407 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 39340000, out pts 79
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 78 to pts 78
+[libx264 @ 000001d9ad672ac0] frame=  78 QP=7.24 NAL=2 Slice:P Poc:156 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466888690000 orig timestamp 466865291310 graph timestamp 466888690000 diff 23398690 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 39740000, out pts 79
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 79
+dshow passing through packet of type video size  1843200 timestamp 466889100000 orig timestamp 466865458027 graph timestamp 466889100000 diff 23641973 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 40150000, out pts 80
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 79 to pts 79
+[libx264 @ 000001d9ad672ac0] frame=  79 QP=7.24 NAL=2 Slice:P Poc:158 I:0    P:268  SKIP:932  size=980 bytes
+frame=   80 fps= 20 q=14.0 size=     124kB time=00:00:03.95 bitrate= 257.6kbits/s speed=0.981x    dshow passing through packet of type video size  1843200 timestamp 466889510000 orig timestamp 466865624744 graph timestamp 466889510000 diff 23885256 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 40560000, out pts 81
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 80 to pts 80
+[libx264 @ 000001d9ad672ac0] frame=  80 QP=7.24 NAL=2 Slice:P Poc:160 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466889910000 orig timestamp 466865791461 graph timestamp 466889910000 diff 24118539 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 40960000, out pts 82
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 81 to pts 81
+[libx264 @ 000001d9ad672ac0] frame=  81 QP=7.24 NAL=2 Slice:P Poc:162 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466890320000 orig timestamp 466865958178 graph timestamp 466890320000 diff 24361822 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 41370000, out pts 83
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 82 to pts 82
+[libx264 @ 000001d9ad672ac0] frame=  82 QP=7.24 NAL=2 Slice:P Poc:164 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466890720000 orig timestamp 466866124895 graph timestamp 466890720000 diff 24595105 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 41770000, out pts 84
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 83 to pts 83
+[libx264 @ 000001d9ad672ac0] frame=  83 QP=7.24 NAL=2 Slice:P Poc:166 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466891130000 orig timestamp 466866291612 graph timestamp 466891130000 diff 24838388 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 42180000, out pts 84
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 84
+dshow passing through packet of type video size  1843200 timestamp 466891540000 orig timestamp 466866458329 graph timestamp 466891540000 diff 25081671 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 42590000, out pts 85
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 84 to pts 84
+[libx264 @ 000001d9ad672ac0] frame=  84 QP=7.24 NAL=2 Slice:P Poc:168 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466891940000 orig timestamp 466866625046 graph timestamp 466891940000 diff 25314954 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 42990000, out pts 86
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 85 to pts 85
+[libx264 @ 000001d9ad672ac0] frame=  85 QP=7.24 NAL=2 Slice:P Poc:170 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466892350000 orig timestamp 466866791763 graph timestamp 466892350000 diff 25558237 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 43400000, out pts 87
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 86 to pts 86
+[libx264 @ 000001d9ad672ac0] frame=  86 QP=7.24 NAL=2 Slice:P Poc:172 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466892750000 orig timestamp 466866958480 graph timestamp 466892750000 diff 25791520 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 43800000, out pts 88
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 87 to pts 87
+[libx264 @ 000001d9ad672ac0] frame=  87 QP=7.24 NAL=2 Slice:P Poc:174 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466893160000 orig timestamp 466867125197 graph timestamp 466893160000 diff 26034803 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 44210000, out pts 88
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 88
+dshow passing through packet of type video size  1843200 timestamp 466893560000 orig timestamp 466867291914 graph timestamp 466893560000 diff 26268086 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 44610000, out pts 89
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 88 to pts 88
+[libx264 @ 000001d9ad672ac0] frame=  88 QP=7.24 NAL=2 Slice:P Poc:176 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466893960000 orig timestamp 466867458631 graph timestamp 466893960000 diff 26501369 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 45010000, out pts 90
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 89 to pts 89
+[libx264 @ 000001d9ad672ac0] frame=  89 QP=7.24 NAL=2 Slice:P Poc:178 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466894370000 orig timestamp 466867625348 graph timestamp 466894370000 diff 26744652 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 45420000, out pts 91
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 90 to pts 90
+[libx264 @ 000001d9ad672ac0] frame=  90 QP=7.24 NAL=2 Slice:P Poc:180 I:0    P:268  SKIP:932  size=978 bytes
+frame=   91 fps= 20 q=14.0 size=     135kB time=00:00:04.50 bitrate= 245.7kbits/s speed=0.993x    dshow passing through packet of type video size  1843200 timestamp 466894780000 orig timestamp 466867792065 graph timestamp 466894780000 diff 26987935 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 45830000, out pts 92
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 91 to pts 91
+[libx264 @ 000001d9ad672ac0] frame=  91 QP=7.24 NAL=2 Slice:P Poc:182 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466895180000 orig timestamp 466867958782 graph timestamp 466895180000 diff 27221218 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 46230000, out pts 92
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 92
+dshow passing through packet of type video size  1843200 timestamp 466895590000 orig timestamp 466868125499 graph timestamp 466895590000 diff 27464501 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 46640000, out pts 93
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 92 to pts 92
+[libx264 @ 000001d9ad672ac0] frame=  92 QP=7.24 NAL=2 Slice:P Poc:184 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466895990000 orig timestamp 466868292216 graph timestamp 466895990000 diff 27697784 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 47040000, out pts 94
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 93 to pts 93
+[libx264 @ 000001d9ad672ac0] frame=  93 QP=7.24 NAL=2 Slice:P Poc:186 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466896390000 orig timestamp 466868458933 graph timestamp 466896390000 diff 27931067 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 47440000, out pts 95
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 94 to pts 94
+[libx264 @ 000001d9ad672ac0] frame=  94 QP=7.24 NAL=2 Slice:P Poc:188 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466896810000 orig timestamp 466868625650 graph timestamp 466896810000 diff 28184350 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 47860000, out pts 96
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 95 to pts 95
+[libx264 @ 000001d9ad672ac0] frame=  95 QP=7.24 NAL=2 Slice:P Poc:190 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466897200000 orig timestamp 466868792367 graph timestamp 466897200000 diff 28407633 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 48250000, out pts 97
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 96 to pts 96
+[libx264 @ 000001d9ad672ac0] frame=  96 QP=7.24 NAL=2 Slice:P Poc:192 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466897610000 orig timestamp 466868959084 graph timestamp 466897610000 diff 28650916 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 48660000, out pts 97
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 97
+dshow passing through packet of type video size  1843200 timestamp 466898020000 orig timestamp 466869125801 graph timestamp 466898020000 diff 28894199 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 49070000, out pts 98
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 97 to pts 97
+[libx264 @ 000001d9ad672ac0] frame=  97 QP=7.24 NAL=2 Slice:P Poc:194 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466898430000 orig timestamp 466869292518 graph timestamp 466898430000 diff 29137482 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 49480000, out pts 99
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 98 to pts 98
+[libx264 @ 000001d9ad672ac0] frame=  98 QP=7.24 NAL=2 Slice:P Poc:196 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466898830000 orig timestamp 466869459235 graph timestamp 466898830000 diff 29370765 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 49880000, out pts 100
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 99 to pts 99
+[libx264 @ 000001d9ad672ac0] frame=  99 QP=7.24 NAL=2 Slice:P Poc:198 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466899240000 orig timestamp 466869625952 graph timestamp 466899240000 diff 29614048 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 50290000, out pts 101
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 100 to pts 100
+[libx264 @ 000001d9ad672ac0] frame= 100 QP=7.24 NAL=2 Slice:P Poc:200 I:0    P:268  SKIP:932  size=978 bytes
+frame=  101 fps= 20 q=14.0 size=     145kB time=00:00:05.00 bitrate= 237.1kbits/s speed=0.993x    dshow passing through packet of type video size  1843200 timestamp 466899640000 orig timestamp 466869792669 graph timestamp 466899640000 diff 29847331 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 50690000, out pts 101
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 101
+dshow passing through packet of type video size  1843200 timestamp 466900050000 orig timestamp 466869959386 graph timestamp 466900050000 diff 30090614 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 51100000, out pts 102
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 101 to pts 101
+[libx264 @ 000001d9ad672ac0] frame= 101 QP=7.24 NAL=2 Slice:P Poc:202 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466900450000 orig timestamp 466870126103 graph timestamp 466900450000 diff 30323897 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 51500000, out pts 103
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 102 to pts 102
+[libx264 @ 000001d9ad672ac0] frame= 102 QP=7.24 NAL=2 Slice:P Poc:204 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466900860000 orig timestamp 466870292820 graph timestamp 466900860000 diff 30567180 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 51910000, out pts 104
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 103 to pts 103
+[libx264 @ 000001d9ad672ac0] frame= 103 QP=7.24 NAL=2 Slice:P Poc:206 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466901260000 orig timestamp 466870459537 graph timestamp 466901260000 diff 30800463 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 52310000, out pts 105
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 104 to pts 104
+[libx264 @ 000001d9ad672ac0] frame= 104 QP=7.24 NAL=2 Slice:P Poc:208 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466901670000 orig timestamp 466870626254 graph timestamp 466901670000 diff 31043746 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 52720000, out pts 105
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 105
+dshow passing through packet of type video size  1843200 timestamp 466902070000 orig timestamp 466870792971 graph timestamp 466902070000 diff 31277029 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 53120000, out pts 106
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 105 to pts 105
+[libx264 @ 000001d9ad672ac0] frame= 105 QP=7.24 NAL=2 Slice:P Poc:210 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466902480000 orig timestamp 466870959688 graph timestamp 466902480000 diff 31520312 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 53530000, out pts 107
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 106 to pts 106
+[libx264 @ 000001d9ad672ac0] frame= 106 QP=7.24 NAL=2 Slice:P Poc:212 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466902880000 orig timestamp 466871126405 graph timestamp 466902880000 diff 31753595 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 53930000, out pts 108
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 107 to pts 107
+[libx264 @ 000001d9ad672ac0] frame= 107 QP=7.24 NAL=2 Slice:P Poc:214 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466903290000 orig timestamp 466871293122 graph timestamp 466903290000 diff 31996878 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 54340000, out pts 109
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 108 to pts 108
+[libx264 @ 000001d9ad672ac0] frame= 108 QP=7.24 NAL=2 Slice:P Poc:216 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466903700000 orig timestamp 466871459839 graph timestamp 466903700000 diff 32240161 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 54750000, out pts 110
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 109 to pts 109
+[libx264 @ 000001d9ad672ac0] frame= 109 QP=7.24 NAL=2 Slice:P Poc:218 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466904110000 orig timestamp 466871626556 graph timestamp 466904110000 diff 32483444 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 55160000, out pts 110
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 110
+frame=  110 fps= 20 q=14.0 size=     154kB time=00:00:05.45 bitrate= 230.8kbits/s speed=0.985x    dshow passing through packet of type video size  1843200 timestamp 466904510000 orig timestamp 466871793273 graph timestamp 466904510000 diff 32716727 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 55560000, out pts 111
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 110 to pts 110
+[libx264 @ 000001d9ad672ac0] frame= 110 QP=7.24 NAL=2 Slice:P Poc:220 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466904910000 orig timestamp 466871959990 graph timestamp 466904910000 diff 32950010 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 55960000, out pts 112
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 111 to pts 111
+[libx264 @ 000001d9ad672ac0] frame= 111 QP=7.24 NAL=2 Slice:P Poc:222 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466905320000 orig timestamp 466872126707 graph timestamp 466905320000 diff 33193293 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 56370000, out pts 113
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 112 to pts 112
+[libx264 @ 000001d9ad672ac0] frame= 112 QP=7.24 NAL=2 Slice:P Poc:224 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466905720000 orig timestamp 466872293424 graph timestamp 466905720000 diff 33426576 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 56770000, out pts 114
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 113 to pts 113
+[libx264 @ 000001d9ad672ac0] frame= 113 QP=7.24 NAL=2 Slice:P Poc:226 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466906130000 orig timestamp 466872460141 graph timestamp 466906130000 diff 33669859 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 57180000, out pts 114
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 114
+dshow passing through packet of type video size  1843200 timestamp 466906530000 orig timestamp 466872626858 graph timestamp 466906530000 diff 33903142 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 57580000, out pts 115
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 114 to pts 114
+[libx264 @ 000001d9ad672ac0] frame= 114 QP=7.24 NAL=2 Slice:P Poc:228 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466906950000 orig timestamp 466872793575 graph timestamp 466906950000 diff 34156425 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 58000000, out pts 116
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 115 to pts 115
+[libx264 @ 000001d9ad672ac0] frame= 115 QP=7.24 NAL=2 Slice:P Poc:230 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466907340000 orig timestamp 466872960292 graph timestamp 466907340000 diff 34379708 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 58390000, out pts 117
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 116 to pts 116
+[libx264 @ 000001d9ad672ac0] frame= 116 QP=7.24 NAL=2 Slice:P Poc:232 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466907760000 orig timestamp 466873127009 graph timestamp 466907760000 diff 34632991 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 58810000, out pts 118
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 117 to pts 117
+[libx264 @ 000001d9ad672ac0] frame= 117 QP=7.24 NAL=2 Slice:P Poc:234 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466908160000 orig timestamp 466873293726 graph timestamp 466908160000 diff 34866274 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 59210000, out pts 118
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 118
+dshow passing through packet of type video size  1843200 timestamp 466908560000 orig timestamp 466873460443 graph timestamp 466908560000 diff 35099557 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 59610000, out pts 119
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 118 to pts 118
+[libx264 @ 000001d9ad672ac0] frame= 118 QP=7.24 NAL=2 Slice:P Poc:236 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466908970000 orig timestamp 466873627160 graph timestamp 466908970000 diff 35342840 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 60020000, out pts 120
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 119 to pts 119
+[libx264 @ 000001d9ad672ac0] frame= 119 QP=7.24 NAL=2 Slice:P Poc:238 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466909370000 orig timestamp 466873793877 graph timestamp 466909370000 diff 35576123 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 60420000, out pts 121
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 120 to pts 120
+[libx264 @ 000001d9ad672ac0] frame= 120 QP=7.24 NAL=2 Slice:P Poc:240 I:0    P:268  SKIP:932  size=978 bytes
+frame=  121 fps= 20 q=14.0 size=     164kB time=00:00:06.00 bitrate= 224.3kbits/s speed=0.994x    dshow passing through packet of type video size  1843200 timestamp 466909780000 orig timestamp 466873960594 graph timestamp 466909780000 diff 35819406 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 60830000, out pts 122
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 121 to pts 121
+[libx264 @ 000001d9ad672ac0] frame= 121 QP=7.24 NAL=2 Slice:P Poc:242 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466910180000 orig timestamp 466874127311 graph timestamp 466910180000 diff 36052689 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 61230000, out pts 122
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 122
+dshow passing through packet of type video size  1843200 timestamp 466910590000 orig timestamp 466874294028 graph timestamp 466910590000 diff 36295972 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 61640000, out pts 123
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 122 to pts 122
+[libx264 @ 000001d9ad672ac0] frame= 122 QP=7.24 NAL=2 Slice:P Poc:244 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466911000000 orig timestamp 466874460745 graph timestamp 466911000000 diff 36539255 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 62050000, out pts 124
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 123 to pts 123
+[libx264 @ 000001d9ad672ac0] frame= 123 QP=7.24 NAL=2 Slice:P Poc:246 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466911400000 orig timestamp 466874627462 graph timestamp 466911400000 diff 36772538 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 62450000, out pts 125
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 124 to pts 124
+[libx264 @ 000001d9ad672ac0] frame= 124 QP=7.24 NAL=2 Slice:P Poc:248 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466911810000 orig timestamp 466874794179 graph timestamp 466911810000 diff 37015821 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 62860000, out pts 126
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 125 to pts 125
+[libx264 @ 000001d9ad672ac0] frame= 125 QP=7.24 NAL=2 Slice:P Poc:250 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466912210000 orig timestamp 466874960896 graph timestamp 466912210000 diff 37249104 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 63260000, out pts 127
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 126 to pts 126
+[libx264 @ 000001d9ad672ac0] frame= 126 QP=7.24 NAL=2 Slice:P Poc:252 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466912620000 orig timestamp 466875127613 graph timestamp 466912620000 diff 37492387 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 63670000, out pts 127
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 127
+dshow passing through packet of type video size  1843200 timestamp 466913030000 orig timestamp 466875294330 graph timestamp 466913030000 diff 37735670 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 64080000, out pts 128
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 127 to pts 127
+[libx264 @ 000001d9ad672ac0] frame= 127 QP=7.24 NAL=2 Slice:P Poc:254 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466913430000 orig timestamp 466875461047 graph timestamp 466913430000 diff 37968953 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 64480000, out pts 129
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 128 to pts 128
+[libx264 @ 000001d9ad672ac0] frame= 128 QP=7.24 NAL=2 Slice:P Poc:256 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466913840000 orig timestamp 466875627764 graph timestamp 466913840000 diff 38212236 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 64890000, out pts 130
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 129 to pts 129
+[libx264 @ 000001d9ad672ac0] frame= 129 QP=7.24 NAL=2 Slice:P Poc:258 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466914240000 orig timestamp 466875794481 graph timestamp 466914240000 diff 38445519 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 65290000, out pts 131
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 130 to pts 130
+[libx264 @ 000001d9ad672ac0] frame= 130 QP=7.24 NAL=2 Slice:P Poc:260 I:0    P:268  SKIP:932  size=978 bytes
+frame=  131 fps= 20 q=14.0 size=     174kB time=00:00:06.50 bitrate= 219.4kbits/s speed=0.993x    dshow passing through packet of type video size  1843200 timestamp 466914650000 orig timestamp 466875961198 graph timestamp 466914650000 diff 38688802 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 65700000, out pts 131
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 131
+dshow passing through packet of type video size  1843200 timestamp 466915050000 orig timestamp 466876127915 graph timestamp 466915050000 diff 38922085 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 66100000, out pts 132
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 131 to pts 131
+[libx264 @ 000001d9ad672ac0] frame= 131 QP=7.24 NAL=2 Slice:P Poc:262 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466915460000 orig timestamp 466876294632 graph timestamp 466915460000 diff 39165368 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 66510000, out pts 133
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 132 to pts 132
+[libx264 @ 000001d9ad672ac0] frame= 132 QP=7.24 NAL=2 Slice:P Poc:264 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466915860000 orig timestamp 466876461349 graph timestamp 466915860000 diff 39398651 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 66910000, out pts 134
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 133 to pts 133
+[libx264 @ 000001d9ad672ac0] frame= 133 QP=7.24 NAL=2 Slice:P Poc:266 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466916260000 orig timestamp 466876628066 graph timestamp 466916260000 diff 39631934 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 67310000, out pts 135
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 134 to pts 134
+[libx264 @ 000001d9ad672ac0] frame= 134 QP=7.24 NAL=2 Slice:P Poc:268 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466916680000 orig timestamp 466876794783 graph timestamp 466916680000 diff 39885217 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 67730000, out pts 135
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 135
+dshow passing through packet of type video size  1843200 timestamp 466917080000 orig timestamp 466876961500 graph timestamp 466917080000 diff 40118500 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 68130000, out pts 136
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 135 to pts 135
+[libx264 @ 000001d9ad672ac0] frame= 135 QP=7.24 NAL=2 Slice:P Poc:270 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466917490000 orig timestamp 466877128217 graph timestamp 466917490000 diff 40361783 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 68540000, out pts 137
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 136 to pts 136
+[libx264 @ 000001d9ad672ac0] frame= 136 QP=7.24 NAL=2 Slice:P Poc:272 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466917890000 orig timestamp 466877294934 graph timestamp 466917890000 diff 40595066 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 68940000, out pts 138
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 137 to pts 137
+[libx264 @ 000001d9ad672ac0] frame= 137 QP=7.24 NAL=2 Slice:P Poc:274 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466918300000 orig timestamp 466877461651 graph timestamp 466918300000 diff 40838349 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 69350000, out pts 139
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 138 to pts 138
+[libx264 @ 000001d9ad672ac0] frame= 138 QP=7.24 NAL=2 Slice:P Poc:276 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466918700000 orig timestamp 466877628368 graph timestamp 466918700000 diff 41071632 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 69750000, out pts 140
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 139 to pts 139
+[libx264 @ 000001d9ad672ac0] frame= 139 QP=7.24 NAL=2 Slice:P Poc:278 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466919110000 orig timestamp 466877795085 graph timestamp 466919110000 diff 41314915 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 70160000, out pts 140
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 140
+dshow passing through packet of type video size  1843200 timestamp 466919510000 orig timestamp 466877961802 graph timestamp 466919510000 diff 41548198 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 70560000, out pts 141
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 140 to pts 140
+[libx264 @ 000001d9ad672ac0] frame= 140 QP=7.24 NAL=2 Slice:P Poc:280 I:0    P:268  SKIP:932  size=978 bytes
+frame=  141 fps= 20 q=14.0 size=     184kB time=00:00:07.00 bitrate= 215.2kbits/s speed=0.993x    dshow passing through packet of type video size  1843200 timestamp 466919920000 orig timestamp 466878128519 graph timestamp 466919920000 diff 41791481 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 70970000, out pts 142
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 141 to pts 141
+[libx264 @ 000001d9ad672ac0] frame= 141 QP=7.24 NAL=2 Slice:P Poc:282 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466920320000 orig timestamp 466878295236 graph timestamp 466920320000 diff 42024764 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 71370000, out pts 143
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 142 to pts 142
+[libx264 @ 000001d9ad672ac0] frame= 142 QP=7.24 NAL=2 Slice:P Poc:284 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466920730000 orig timestamp 466878461953 graph timestamp 466920730000 diff 42268047 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 71780000, out pts 144
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 143 to pts 143
+[libx264 @ 000001d9ad672ac0] frame= 143 QP=7.24 NAL=2 Slice:P Poc:286 I:0    P:268  SKIP:932  size=980 bytes
+dshow passing through packet of type video size  1843200 timestamp 466921130000 orig timestamp 466878628670 graph timestamp 466921130000 diff 42501330 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 72180000, out pts 144
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 144
+dshow passing through packet of type video size  1843200 timestamp 466921540000 orig timestamp 466878795387 graph timestamp 466921540000 diff 42744613 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 72590000, out pts 145
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 144 to pts 144
+[libx264 @ 000001d9ad672ac0] frame= 144 QP=7.24 NAL=2 Slice:P Poc:288 I:0    P:268  SKIP:932  size=978 bytes
+dshow passing through packet of type video size  1843200 timestamp 466921940000 orig timestamp 466878962104 graph timestamp 466921940000 diff 42977896 XI100DUSB-HDMI Video
+[rawvideo @ 000001d9ad66fc40] PACKET SIZE: 1843200, STRIDE: 2560
+[Parsed_fps_1 @ 000001d9ad67b100] Read frame with in pts 72990000, out pts 146
+[Parsed_fps_1 @ 000001d9ad67b100] Writing frame with pts 145 to pts 145
+[libx264 @ 000001d9ad672ac0] frame= 145 QP=7.24 NAL=2 Slice:P Poc:290 I:0    P:268  SKIP:932  size=980 bytes
+
+Received windows signal 0
+[Parsed_fps_1 @ 000001d9ad67b100] EOF is at pts 146
+[Parsed_fps_1 @ 000001d9ad67b100] Dropping frame with pts 146
+[flv @ 000001d9ad671600] Failed to update header with correct duration.
+[flv @ 000001d9ad671600] Failed to update header with correct filesize.
+frame=  146 fps= 20 q=14.0 Lsize=     189kB time=00:00:07.25 bitrate= 213.3kbits/s speed=0.99x    
+video:185kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.923472%
+Input file #0 (video=XI100DUSB-HDMI Video):
+  Input stream #0:0 (video): 181 packets read (333619200 bytes); 181 frames decoded; 
+  Total: 181 packets (333619200 bytes) demuxed
+Output file #0 (rtmp://127.0.0.1:1935/live/teststream):
+  Output stream #0:0 (video): 146 frames encoded; 146 packets muxed (189709 bytes); 
+  Total: 146 packets (189709 bytes) muxed
+181 frames successfully decoded, 0 decoding errors
+dshow passing through packet of type video size  1843200 timestamp 466922360000 orig timestamp 466879128821 graph timestamp 466922360000 diff 43231179 XI100DUSB-HDMI Video
+[Parsed_fps_1 @ 000001d9ad67b100] 181 frames in, 146 frames out; 35 frames dropped, 0 frames duplicated.
+[AVIOContext @ 000001d9ad683940] Statistics: 0 seeks, 148 writeouts
+[rtmp @ 000001d9ad673d80] UnPublishing stream...
+[rtmp @ 000001d9ad673d80] Deleting stream...
+[libx264 @ 000001d9ad672ac0] frame I:1     Avg QP:13.51  size: 10268
+[libx264 @ 000001d9ad672ac0] frame P:145   Avg QP: 7.33  size:  1233
+[libx264 @ 000001d9ad672ac0] mb I  I16..4: 39.5% 51.8%  8.7%
+[libx264 @ 000001d9ad672ac0] mb P  I16..4:  0.1%  0.0%  0.0%  P16..4: 24.3%  0.0%  0.0%  0.0%  0.0%    skip:75.5%
+[libx264 @ 000001d9ad672ac0] 8x8 transform intra:44.9% inter:18.6%
+[libx264 @ 000001d9ad672ac0] coded y,uvDC,uvAC intra: 49.2% 74.8% 66.4% inter: 7.1% 2.2% 1.3%
+[libx264 @ 000001d9ad672ac0] i16 v,h,dc,p: 42% 22% 11% 25%
+[libx264 @ 000001d9ad672ac0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 17% 30%  9%  9%  4%  7%  4%  7%
+[libx264 @ 000001d9ad672ac0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 31% 15% 35%  3%  4%  4%  2%  2%  2%
+[libx264 @ 000001d9ad672ac0] i8c dc,h,v,p: 66% 13% 17%  4%
+[libx264 @ 000001d9ad672ac0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 000001d9ad672ac0] kb/s:207.22
+dshow passing through packet of type video size        0 timestamp 466922520000 orig timestamp 7916950568247328 graph timestamp 466922520000 diff -7916483645727328 XI100DUSB-HDMI Video
+Exiting normally, received signal 2.

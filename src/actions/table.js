@@ -51,7 +51,6 @@ export const clickPreview = (stepNumber, previewLink) => {
 };
 
 export const updatePreview = (stepNumber, newPreview) => {
-  console.log(stepNumber);
   return {
     type: "UPDATE_PREVIEW",
     payload: {
@@ -61,9 +60,31 @@ export const updatePreview = (stepNumber, newPreview) => {
   };
 };
 
+export const updateSelection = (stepNumber, top, left, width, height) => {
+  return {
+    type: "UPDATE_SELECTION",
+    payload: {
+      stepNumber: stepNumber,
+      selection: {
+        top,
+        left,
+        width,
+        height
+      }
+    }
+  };
+};
+
 export const clickEdit = status => {
   return {
     type: "CLICK_EDIT",
+    payload: status
+  };
+};
+
+export const expectedBehaviourSelectionChanged = status => {
+  return {
+    type: "EXPECTED_BEHAVIOUR_CHANGED",
     payload: status
   };
 };

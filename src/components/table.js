@@ -9,7 +9,9 @@ import {
   clickCamera,
   clickPreview,
   updatePreview,
-  clickEdit
+  clickEdit,
+  updateSelection,
+  expectedBehaviourSelectionChanged
 } from "../actions/table";
 
 import {
@@ -57,7 +59,15 @@ class TestCaseTable extends Component {
       {
         order: stepNumber,
         action: "default",
-        expectedBehaviour: "",
+        expectedBehaviour: {
+          image: "",
+          selection: {
+            top: 0,
+            left: 0,
+            width: 0,
+            height: 0
+          }
+        },
         delay: ""
       }
     ]);
@@ -103,16 +113,6 @@ class TestCaseTable extends Component {
     this.props.updateTestCaseTable(newTable);
   };
 
-  screenshotUpdater = newExpectedBehaviour => {
-    const newTable = [...this.props.table];
-    const index = _.findIndex(newTable, { order: this.props.cameraClicked });
-    newTable.splice(index, 1, {
-      ...newTable[index],
-      expectedBehaviour: newExpectedBehaviour
-    });
-    this.props.updateTestCaseTable(newTable);
-  };
-
   getCoords = element => {
     return ReactDOM.findDOMNode(this)
       .querySelector(element)
@@ -127,9 +127,11 @@ class TestCaseTable extends Component {
         return stepId != this.props.table.length;
       case "duplicate":
         return action != "default";
+      case "remove":
+        return this.props.table.length !== 1;
       case "preview":
       case "edit":
-        return stepId != this.props.table.length && extraValue;
+        return extraValue;
     }
   };
 
@@ -202,7 +204,7 @@ class TestCaseTable extends Component {
               "preview",
               step.action,
               step.order,
-              step.expectedBehaviour
+              step.expectedBehaviour.image
             ) && (
               <i
                 id={`table_preview${step.order}`}
@@ -218,7 +220,10 @@ class TestCaseTable extends Component {
                 })()}
                 style={{ opacity: "0.9" }}
                 onClick={() => {
-                  this.handlePreviewClicked(step.order, step.expectedBehaviour);
+                  this.handlePreviewClicked(
+                    step.order,
+                    step.expectedBehaviour.image
+                  );
                   this.handleOnMouseLeave();
                 }}
                 onMouseOver={() => {
@@ -234,7 +239,7 @@ class TestCaseTable extends Component {
               "edit",
               step.action,
               step.order,
-              step.expectedBehaviour
+              step.expectedBehaviour.image
             ) && (
               <i
                 id={`table_edit${step.order}`}
@@ -303,14 +308,19 @@ class TestCaseTable extends Component {
                 aria-hidden="true"
               />
             )}
-
-            <i
-              style={{ position: "absolute", left: "42%", opacity: "0.9" }}
-              className="trash icon pointer_cursor large "
-              onClick={() => {
-                this.handleRemoveButton(step.order);
-              }}
-            />
+            {this.handleTableButtonsDisplay(
+              "remove",
+              step.action,
+              step.order
+            ) && (
+              <i
+                style={{ position: "absolute", left: "42%", opacity: "0.9" }}
+                className="trash icon pointer_cursor large "
+                onClick={() => {
+                  this.handleRemoveButton(step.order);
+                }}
+              />
+            )}
             {this.handleTableButtonsDisplay(
               "duplicate",
               step.action,
@@ -431,7 +441,7 @@ class TestCaseTable extends Component {
                       <ExpectedBehaviourPreview
                         previewPic={
                           this.props.table[this.props.selectedStep - 1]
-                            .expectedBehaviour
+                            .expectedBehaviour.image
                         }
                         pictureLink={this.props.previewLink}
                         top={this.props.selectedStepCoords.top}
@@ -443,13 +453,47 @@ class TestCaseTable extends Component {
                   {this.props.editClicked && (
                     <Modal
                       anchorId="modal"
-                      closeModalHandler={() => this.props.clickEdit(false)}
+                      closeModalHandler={() => {
+                        if (this.props.expectedBehaviourEdited) {
+                          alert(
+                            "Expected behaviour selection has been edited. Please save or discard the change to proceed"
+                          );
+                        } else this.props.clickEdit(false);
+                      }}
                     >
                       <EditExpectedBehaviourComponent
                         image={
                           this.props.table[this.props.selectedStep - 1]
-                            .expectedBehaviour
+                            .expectedBehaviour.image
                         }
+                        selection={
+                          this.props.table[this.props.selectedStep - 1]
+                            .expectedBehaviour.selection
+                        }
+                        saveButtonHandler={({ top, left, width, height }) => {
+                          this.props.updateSelection(
+                            this.props.selectedStep,
+                            top,
+                            left,
+                            width,
+                            height
+                          );
+                          this.props.clickEdit(false);
+                          this.props.expectedBehaviourSelectionChanged(false);
+                        }}
+                        cancelButtonHandler={() => {
+                          {
+                            this.props.clickEdit(false);
+                            this.props.expectedBehaviourSelectionChanged(false);
+                          }
+                        }}
+                        // inverseSelectionButtonHandler={() => {
+                        //   this.props.clickEdit(false);
+                        //   this.props.expectedBehaviourSelectionChanged(false);
+                        // }}
+                        handleChange={() => {
+                          this.props.expectedBehaviourSelectionChanged(true);
+                        }}
                       />
                     </Modal>
                   )}
@@ -490,6 +534,7 @@ const mapStateToProps = state => {
     actionClicked: state.table.actionClicked,
     cameraClicked: state.table.cameraClicked,
     previewClicked: state.table.previewClicked,
+    expectedBehaviourEdited: state.table.expectedBehaviourEdited,
     editClicked: state.table.editClicked,
     previewLink: state.table.previewLink,
     tooltip: state.tooltip,
@@ -512,6 +557,8 @@ export default connect(
     decrementToolTipTimer,
     hideTooltip,
     showPicture,
-    clickEdit
+    clickEdit,
+    updateSelection,
+    expectedBehaviourSelectionChanged
   }
 )(TestCaseTable);

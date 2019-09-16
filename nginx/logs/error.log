@@ -1,0 +1,175 @@
+2019/09/14 23:00:52 [notice] 1804#10564: signal process started (stop)
+2019/09/14 23:00:52 [error] 1804#10564: CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2019/09/14 23:00:54 [notice] 12444#15184: sockinit() attempting to access sockapi
+2019/09/14 23:00:54 [notice] 12444#15184: Access to sockapi succeded!
+2019/09/14 23:00:54 [notice] 12444#15184: using sockapi from "4;72;"
+2019/09/14 23:00:57 [crit] 12444#9080: *1 record:  failed to open file '/video_recordings/testStream-1568466057.flv' (3: The system cannot find the path specified), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/09/14 23:01:01 [error] 12444#9080: *2 directory index of "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live/" is forbidden, client: 127.0.0.1, server: localhost, request: "GET /live/ HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:01:01 [error] 12444#9080: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://127.0.0.1:8000/live/"
+2019/09/14 23:04:28 [notice] 7260#16084: signal process started (stop)
+2019/09/14 23:04:35 [notice] 14952#15440: sockinit() attempting to access sockapi
+2019/09/14 23:04:35 [notice] 14952#15440: Access to sockapi succeded!
+2019/09/14 23:04:35 [notice] 14952#15440: using sockapi from "4;68;"
+2019/09/14 23:04:37 [crit] 14952#11480: *1 record:  failed to open file '/video_recordings/testStream-1568466277.flv' (3: The system cannot find the path specified), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/09/14 23:07:09 [notice] 19108#15636: signal process started (stop)
+2019/09/14 23:07:23 [notice] 8568#11068: sockinit() attempting to access sockapi
+2019/09/14 23:07:23 [notice] 8568#11068: Access to sockapi succeded!
+2019/09/14 23:07:23 [notice] 8568#11068: using sockapi from "4;76;"
+2019/09/14 23:07:26 [crit] 8568#18008: *1 record:  failed to open file '/video_recordings/testStream-1568466446.flv' (3: The system cannot find the path specified), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/09/14 23:07:40 [error] 8568#18008: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/live" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/14 23:08:00 [error] 8568#18008: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/14 23:08:34 [error] 8568#18008: *2 directory index of "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/live/" is forbidden, client: 127.0.0.1, server: localhost, request: "GET /dash/ HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/14 23:08:55 [notice] 4628#15876: signal process started (stop)
+2019/09/14 23:09:00 [notice] 13136#16128: sockinit() attempting to access sockapi
+2019/09/14 23:09:00 [notice] 13136#16128: Access to sockapi succeded!
+2019/09/14 23:09:00 [notice] 13136#16128: using sockapi from "4;80;"
+2019/09/14 23:09:03 [crit] 13136#10000: *1 record:  failed to open file '/video_recordings/testStream-1568466543.flv' (3: The system cannot find the path specified), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/09/14 23:18:51 [crit] 13136#10000: *6 record:  failed to open file '/video_recordings/testStream-1568467131.flv' (3: The system cannot find the path specified), client: 127.0.0.1, server: 0.0.0.0:1935
+2019/09/14 23:20:17 [notice] 7052#6764: signal process started (stop)
+2019/09/14 23:20:24 [notice] 11576#2600: sockinit() attempting to access sockapi
+2019/09/14 23:20:24 [notice] 11576#2600: Access to sockapi succeded!
+2019/09/14 23:20:24 [notice] 11576#2600: using sockapi from "4;72;"
+2019/09/14 23:21:14 [error] 11576#13500: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:21:14 [error] 11576#13500: *3 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:22:23 [error] 11576#13500: *5 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:22:23 [error] 11576#13500: *6 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:22:39 [error] 11576#13500: *7 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:22:39 [error] 11576#13500: *8 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:25:26 [error] 11576#13500: *17 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:25:26 [error] 11576#13500: *18 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:26:35 [error] 11576#13500: *20 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:26:35 [error] 11576#13500: *21 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:27:45 [error] 11576#13500: *22 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:27:45 [error] 11576#13500: *23 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:27:56 [notice] 16672#16940: signal process started (stop)
+2019/09/14 23:28:03 [notice] 6828#20120: sockinit() attempting to access sockapi
+2019/09/14 23:28:03 [notice] 6828#20120: Access to sockapi succeded!
+2019/09/14 23:28:03 [notice] 6828#20120: using sockapi from "4;76;"
+2019/09/14 23:39:36 [notice] 13604#15864: signal process started (stop)
+2019/09/14 23:39:38 [notice] 10788#6432: sockinit() attempting to access sockapi
+2019/09/14 23:39:38 [notice] 10788#6432: Access to sockapi succeded!
+2019/09/14 23:39:38 [notice] 10788#6432: using sockapi from "4;112;"
+2019/09/14 23:39:47 [error] 10788#14476: *2 CreateFile() "C:/Users/toan/Tutorials/stream/storage/live" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /live HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/14 23:41:31 [warn] 2852#6240: duplicate extension "m3u8", content type: "application/vnd.apple.mpegurl", previous content type: "application/vnd.apple.mpegurl" in C:\Users\Musty\reactProject\redux-experiment\nginx/conf/nginx.conf:61
+2019/09/14 23:41:31 [emerg] 2852#6240: "location" directive is not allowed here in C:\Users\Musty\reactProject\redux-experiment\nginx/conf/nginx.conf:72
+2019/09/14 23:42:29 [warn] 19732#3208: duplicate extension "m3u8", content type: "application/vnd.apple.mpegurl", previous content type: "application/vnd.apple.mpegurl" in C:\Users\Musty\reactProject\redux-experiment\nginx/conf/nginx.conf:57
+2019/09/14 23:42:29 [notice] 19732#3208: signal process started (stop)
+2019/09/14 23:42:58 [notice] 11900#16952: sockinit() attempting to access sockapi
+2019/09/14 23:42:58 [notice] 11900#16952: Access to sockapi succeded!
+2019/09/14 23:42:58 [notice] 11900#16952: using sockapi from "4;68;"
+2019/09/14 23:49:48 [error] 11900#20244: *8 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/livestream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/14 23:50:16 [notice] 20940#21028: signal process started (stop)
+2019/09/14 23:50:24 [notice] 8132#8048: sockinit() attempting to access sockapi
+2019/09/14 23:50:24 [notice] 8132#8048: Access to sockapi succeded!
+2019/09/14 23:50:24 [notice] 8132#8048: using sockapi from "4;76;"
+2019/09/14 23:50:35 [error] 8132#21328: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/livestream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:50:35 [error] 8132#21328: *3 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/livestream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:53:57 [error] 8132#21328: *5 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:53:57 [error] 8132#21328: *6 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/live" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:54:41 [error] 8132#21328: *7 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/livestream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:54:41 [error] 8132#21328: *8 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/livestream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:55:11 [notice] 3688#8992: signal process started (stop)
+2019/09/14 23:55:17 [notice] 20168#21396: sockinit() attempting to access sockapi
+2019/09/14 23:55:17 [notice] 20168#21396: Access to sockapi succeded!
+2019/09/14 23:55:17 [notice] 20168#21396: using sockapi from "4;76;"
+2019/09/14 23:55:24 [error] 20168#21160: *1 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/testtream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:55:24 [error] 20168#21160: *2 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/testtream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:55:32 [error] 20168#21160: *4 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/testtream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:55:32 [error] 20168#21160: *5 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/testtream" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:55:56 [notice] 22304#22308: signal process started (stop)
+2019/09/14 23:56:03 [notice] 21812#21844: sockinit() attempting to access sockapi
+2019/09/14 23:56:03 [notice] 21812#21844: Access to sockapi succeded!
+2019/09/14 23:56:03 [notice] 21812#21844: using sockapi from "4;76;"
+2019/09/14 23:58:00 [notice] 12444#22184: signal process started (stop)
+2019/09/14 23:58:05 [notice] 11124#8008: sockinit() attempting to access sockapi
+2019/09/14 23:58:05 [notice] 11124#8008: Access to sockapi succeded!
+2019/09/14 23:58:05 [notice] 11124#8008: using sockapi from "4;76;"
+2019/09/14 23:59:03 [error] 11124#21472: *4 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash.m3u8 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:59:03 [error] 11124#21472: *5 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash.m3u8 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/14 23:59:23 [error] 11124#21472: *6 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.m3u8 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/14 23:59:23 [error] 11124#21472: *7 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.m3u8 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:02:03 [notice] 21464#16112: signal process started (stop)
+2019/09/15 00:02:10 [notice] 9424#21472: sockinit() attempting to access sockapi
+2019/09/15 00:02:10 [notice] 9424#21472: Access to sockapi succeded!
+2019/09/15 00:02:10 [notice] 9424#21472: using sockapi from "4;8;"
+2019/09/15 00:04:13 [error] 9424#20180: *10 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/43.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/43.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:04:22 [error] 9424#20180: *12 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/42.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/42.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:04:23 [error] 9424#20180: *14 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/42.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/42.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:04:24 [error] 9424#20180: *16 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/42.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/42.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:04:28 [error] 9424#20180: *18 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/42.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/42.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:04:30 [error] 9424#20180: *20 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/42.ts" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/42.ts HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *44 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *45 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *46 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *47 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *48 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:15 [error] 9424#20180: *49 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:07:24 [error] 9424#20180: *51 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:24 [error] 9424#20180: *52 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:07:30 [error] 9424#20180: *53 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:30 [error] 9424#20180: *54 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:07:35 [error] 9424#20180: *55 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:07:35 [error] 9424#20180: *56 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *81 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *82 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *83 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *84 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *85 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:10:14 [error] 9424#20180: *86 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:17:38 [error] 9424#20180: *88 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:17:38 [error] 9424#20180: *89 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:18:03 [error] 9424#20180: *96 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m8u3" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m8u3 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:18:03 [error] 9424#20180: *97 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m8u3" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m8u3 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:22:58 [notice] 15948#20388: signal process started (stop)
+2019/09/15 00:23:11 [notice] 23196#12976: sockinit() attempting to access sockapi
+2019/09/15 00:23:11 [notice] 23196#12976: Access to sockapi succeded!
+2019/09/15 00:23:11 [notice] 23196#12976: using sockapi from "4;8;"
+2019/09/15 00:24:18 [error] 23196#21084: *3 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 00:35:16 [error] 23196#21084: *10 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:35:16 [error] 23196#21084: *11 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *33 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *35 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *36 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *37 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:37:16 [error] 23196#21084: *38 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/dash/teststream/index.mpd" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /dash/index.mpd HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:44:24 [emerg] 24040#25472: "hls_playlist_length" directive is not allowed here in C:\Users\Musty\reactProject\redux-experiment\nginx/conf/nginx.conf:41
+2019/09/15 00:47:55 [notice] 25312#21556: signal process started (stop)
+2019/09/15 00:48:06 [notice] 6416#20388: sockinit() attempting to access sockapi
+2019/09/15 00:48:06 [notice] 6416#20388: Access to sockapi succeded!
+2019/09/15 00:48:06 [notice] 6416#20388: using sockapi from "4;8;"
+2019/09/15 00:50:59 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:51:15 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:51:30 [error] 6416#8476: *3 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:51:30 [error] 6416#8476: *4 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:51:31 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:51:55 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:52:11 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:52:27 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:52:59 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:53:03 [error] 6416#8476: *7 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.1", host: "127.0.0.1:8000"
+2019/09/15 00:53:03 [error] 6416#8476: *8 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/index.m3u8" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /live/index.m3u8 HTTP/1.0", host: "127.0.0.1:8000"
+2019/09/15 00:53:15 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:53:39 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:54:03 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:54:09 [error] 6416#8476: *10 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/teststream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/teststream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 00:54:19 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:54:27 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:54:43 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:55:07 [error] 6416#15000: hls: cleanup RemoveDirectory() failed on 'hls/teststream' (145: The directory is not empty)
+2019/09/15 00:55:16 [notice] 25596#2448: signal process started (stop)
+2019/09/15 00:55:23 [notice] 8516#6756: sockinit() attempting to access sockapi
+2019/09/15 00:55:23 [notice] 8516#6756: Access to sockapi succeded!
+2019/09/15 00:55:23 [notice] 8516#6756: using sockapi from "4;116;"
+2019/09/15 01:18:37 [error] 8516#25584: *32 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:20:32 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/teststream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/teststream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:20:43 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:20:58 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:21:13 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:21:38 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:22:35 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (2: The system cannot find the file specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:23:29 [error] 8516#25584: *34 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (3: The system cannot find the path specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:24:46 [error] 8516#25584: *38 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (3: The system cannot find the path specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:25:52 [error] 8516#25584: *39 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "127.0.0.1:8000", referrer: "http://localhost:3000/"
+2019/09/15 01:26:01 [error] 8516#25584: *40 CreateFile() "C:\Users\Musty\reactProject\redux-experiment\nginx/hls/teststream/testStream.flv" failed (3: The system cannot find the path specified), client: 192.168.0.46, server: localhost, request: "GET /live/testStream.flv HTTP/1.1", host: "192.168.0.46:8000", referrer: "http://localhost:3000/"
+2019/09/15 17:53:15 [emerg] 13396#6560: unknown directive "flv_live" in C:\Users\Musty\reactProject\redux-experiment\nginx/conf/nginx.conf:47

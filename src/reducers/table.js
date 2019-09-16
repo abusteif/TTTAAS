@@ -5,7 +5,16 @@ const INITIAL_TEST_CASE_TABLE = {
     {
       order: "1",
       action: "default",
-      expectedBehaviour: "",
+      expectedBehaviour: {
+        image: "",
+        selection: {
+          top: 0,
+          left: 0,
+          width: 0,
+          height: 0
+        }
+      },
+
       delay: ""
     }
   ],
@@ -23,7 +32,8 @@ const INITIAL_TEST_CASE_TABLE = {
   cameraClicked: "",
   previewClicked: "",
   previewLink: "",
-  editClicked: false
+  editClicked: false,
+  expectedBehaviourEdited: false
 };
 
 export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
@@ -65,18 +75,42 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
       };
 
     case "UPDATE_PREVIEW":
-      const newState = JSON.parse(JSON.stringify({ ...state }));
+      const newState1 = JSON.parse(JSON.stringify({ ...state }));
 
-      const index = _.findIndex(newState.table, {
+      const index1 = _.findIndex(newState1.table, {
         order: action.payload.stepNumber
       });
-      newState.table.splice(index, 1, {
-        ...newState.table[index],
-        expectedBehaviour: action.payload.previewLink
+      newState1.table.splice(index1, 1, {
+        ...newState1.table[index1],
+        expectedBehaviour: {
+          ...newState1.table[index1].expectedBehaviour,
+          image: action.payload.previewLink,
+          selection: { top: 190, left: 245, width: 150, height: 100 }
+        }
       });
-      return newState;
+      return newState1;
     case "CLICK_EDIT":
       return { ...state, editClicked: action.payload };
+
+    case "EXPECTED_BEHAVIOUR_CHANGED":
+      return { ...state, expectedBehaviourEdited: action.payload };
+
+    case "UPDATE_SELECTION":
+      const newState2 = JSON.parse(JSON.stringify({ ...state }));
+
+      const index2 = _.findIndex(newState2.table, {
+        order: action.payload.stepNumber
+      });
+
+      newState2.table.splice(index2, 1, {
+        ...newState2.table[index2],
+        expectedBehaviour: {
+          ...newState2.table[index2].expectedBehaviour,
+          selection: action.payload.selection
+        }
+      });
+      return newState2;
+
     default:
       return state;
   }

@@ -52,7 +52,8 @@ export default class VideoComponent extends Component {
       type: "flv",
       url: this.props.streamURL,
       isLive: true,
-      hasAudio: false
+      hasAudio: false,
+      enableStashBuffer: false
     });
     this.player.attachMediaElement(this.videoRef.current);
     this.player.load();
@@ -76,6 +77,7 @@ export default class VideoComponent extends Component {
               this.setState({ playbackStarted: true });
               this.props.playbackHandler(true);
             }}
+            onClick={this.syncPlayer}
           />
         </div>
 
