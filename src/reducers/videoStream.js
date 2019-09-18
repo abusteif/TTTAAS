@@ -2,7 +2,8 @@ const INITIAL_STREAM_STATE = {
   showStream: false,
   playbackStarted: false,
   showTakenPicture: false,
-  picture: null
+  picture: null,
+  syncPlayerFunc: null
 };
 
 export const videoStream = (state = INITIAL_STREAM_STATE, action) => {
@@ -15,7 +16,8 @@ export const videoStream = (state = INITIAL_STREAM_STATE, action) => {
       return { ...state, showTakenPicture: action.payload };
     case "UPDATE_PICTURE":
       return { ...state, picture: action.payload };
-
+    case "UPDATE_VIDEO_SYNC_FUNC":
+      return { ...state, syncPlayerFunc: action.payload };
     default:
       return state;
   }

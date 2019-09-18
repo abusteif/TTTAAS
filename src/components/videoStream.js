@@ -4,35 +4,85 @@ import {
   showVideoStream,
   playbackStarted,
   showPicture,
-  updatePictureTaken
+  updatePictureTaken,
+  updateVideoSyncFunc
 } from "../actions/videoStream";
 import { updatePreview, selectStep } from "../actions/table";
-
+import { pressTtvKey } from "../actions/ttvControl";
 import VideoComponent from "./videoComponent";
 import RemoteControlPanel from "./remoteControlPanel";
 
-import "../styling/videoStream.css";
+import { videoDimensions } from "../configs.js";
+
 import "../styling/expectedBehaviour.css";
+import "../styling/videoComponent.css";
 
 const streamCode = "teststream";
 const ip = "localhost";
 const port = "8000";
+
+const sleep = milliseconds => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
 
 class VideoStream extends Component {
   screenShotHandler = dataURI => {
     console.log(dataURI);
   };
 
+  componentDidUpdate = () => {
+    this.props.updateVideoSyncFunc(this.child.syncPlayer);
+  };
+
+  remoteControlClickHandler = key => {
+    var buttonPressed = "";
+    switch (key) {
+      case "home":
+      case "back":
+      case "up":
+      case "down":
+      case "right":
+      case "left":
+        buttonPressed = key;
+        break;
+      case "ok":
+        buttonPressed = "select";
+        break;
+      case "undo":
+        buttonPressed = "InstantReplay";
+        break;
+      case "star":
+        buttonPressed = "Info";
+        break;
+      default:
+        return;
+    }
+    this.props.pressTtvKey(buttonPressed);
+    sleep(500).then(() => this.props.syncPlayerFunc());
+    sleep(500).then(() => this.props.syncPlayerFunc());
+  };
+
   render = () => {
     return (
       <div>
         {this.props.showTakenPicture && (
-          <img className="screenshot" src={this.props.pictureTaken} />
+          <img
+            className="screenshot"
+            src={this.props.pictureTaken}
+            style={{
+              width: `${videoDimensions.width}px`,
+              height: `${videoDimensions.height}px`
+            }}
+          />
         )}
         {this.props.showTakenPicture && (
           <div
             className="ui message"
-            style={{ position: "absolute", width: "640px", top: "480px" }}
+            style={{
+              position: "absolute",
+              width: `${videoDimensions.width}px`,
+              top: `${videoDimensions.height}px`
+            }}
           >
             <div className="header">
               Screenshot captured for step {this.props.selectedStep}
@@ -79,6 +129,7 @@ class VideoStream extends Component {
           })()}
         >
           <VideoComponent
+            onRef={ref => (this.child = ref)}
             streamURL={`http://${ip}:${port}/live/${streamCode}.flv`}
             screenshotHandler={newPic => {
               this.props.updatePictureTaken(newPic);
@@ -91,7 +142,7 @@ class VideoStream extends Component {
 
           <RemoteControlPanel
             style={{ position: "absolute" }}
-            clickHandler={() => console.log("ok")}
+            clickHandler={button => this.remoteControlClickHandler(button)}
           />
         </div>
       </div>
@@ -105,7 +156,8 @@ const mapStateToProps = state => {
     selectedStep: state.table.selectedStep,
     showStream: state.videoStream.showStream,
     showTakenPicture: state.videoStream.showTakenPicture,
-    pictureTaken: state.videoStream.picture
+    pictureTaken: state.videoStream.picture,
+    syncPlayerFunc: state.videoStream.syncPlayerFunc
   };
 };
 
@@ -117,6 +169,8 @@ export default connect(
     updatePreview,
     selectStep,
     showPicture,
-    updatePictureTaken
+    updatePictureTaken,
+    updateVideoSyncFunc,
+    pressTtvKey
   }
 )(VideoStream);

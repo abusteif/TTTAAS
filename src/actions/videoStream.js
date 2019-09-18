@@ -24,3 +24,10 @@ export const updatePictureTaken = pic => {
     payload: pic
   };
 };
+
+export const updateVideoSyncFunc = newFunc => {
+  return {
+    type: "UPDATE_VIDEO_SYNC_FUNC",
+    payload: newFunc
+  };
+};

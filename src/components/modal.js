@@ -7,6 +7,7 @@ class Modal extends React.Component {
       <div
         onClick={this.props.closeModalHandler}
         style={{
+          display: "table",
           height: "100%",
           width: "100%",
           position: "absolute",

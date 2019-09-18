@@ -3,6 +3,8 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import "../styling/expectedBehaviour.css";
 
+import { videoDimensions } from "../configs.js";
+
 export default class EditExpectedBehaviourComponent extends Component {
   state = {
     selection: { top: 0, left: 0, width: 0, height: 0 },
@@ -51,6 +53,14 @@ export default class EditExpectedBehaviourComponent extends Component {
     this.props.saveButtonHandler(this.refs.cropper.cropper.cropBoxData);
   };
 
+  handleSelectAllButton = () => {
+    this.refs.cropper.cropper.setData({
+      x: 0,
+      y: 0,
+      width: videoDimensions.width * 2,
+      height: videoDimensions.height * 2
+    });
+  };
   handleCancelButtonClick = () => {
     this.props.cancelButtonHandler();
   };
@@ -58,43 +68,58 @@ export default class EditExpectedBehaviourComponent extends Component {
   render = () => {
     return (
       <div
-        onClick={e => e.stopPropagation()}
         style={{
-          height: "560px",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          border: "5px groove",
-          margin: "-320px 0 0 -240px",
-          borderRadius: "1%"
+          display: "table-cell",
+          verticalAlign: "middle",
+          textAlign: "center",
+          margin: "0 auto"
         }}
       >
-        <Cropper
-          ref="cropper"
-          src={this.props.image}
-          crop={this._crop}
-          data={{
-            x: this.props.selection.left,
-            y: this.props.selection.top,
-            width: this.props.selection.width,
-            height: this.props.selection.height
-          }}
-        />
-
         <div
-          className="ui message"
-          style={{ position: "absolute", width: "640px", bottom: "0px" }}
+          onClick={e => e.stopPropagation()}
+          style={{
+            display: "inline-block",
+            width: `${videoDimensions.width * 2}px`,
+            borderRadius: "1%"
+          }}
         >
-          <button
-            className={this.handleChange("ui primary button")}
-            onClick={this.handleSaveButtonClick}
-          >
-            Save selection
-          </button>
+          <Cropper
+            ref="cropper"
+            src={this.props.image}
+            crop={this._crop}
+            data={{
+              x: this.props.selection.left,
+              y: this.props.selection.top,
+              width: this.props.selection.width,
+              height: this.props.selection.height
+            }}
+          />
 
-          <button className="ui button" onClick={this.handleCancelButtonClick}>
-            Cancel
-          </button>
+          <div
+            className="ui message"
+            style={{
+              width: `${videoDimensions.width * 2}px`,
+              bottom: "0px",
+              margin: "0px"
+            }}
+          >
+            <button
+              className={this.handleChange("ui primary button")}
+              onClick={this.handleSaveButtonClick}
+            >
+              Save selection
+            </button>
+            <button className="ui button" onClick={this.handleSelectAllButton}>
+              Select all
+            </button>
+
+            <button
+              className="ui button"
+              onClick={this.handleCancelButtonClick}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     );

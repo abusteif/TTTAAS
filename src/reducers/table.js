@@ -1,4 +1,6 @@
 import { testCases } from "../static/mockData";
+import { videoDimensions } from "../configs.js";
+
 import _ from "lodash";
 const INITIAL_TEST_CASE_TABLE = {
   table: [
@@ -85,7 +87,12 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
         expectedBehaviour: {
           ...newState1.table[index1].expectedBehaviour,
           image: action.payload.previewLink,
-          selection: { top: 190, left: 245, width: 150, height: 100 }
+          selection: {
+            top: videoDimensions.height - 50,
+            left: videoDimensions.width - 75,
+            width: 150,
+            height: 100
+          }
         }
       });
       return newState1;

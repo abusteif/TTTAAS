@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import flv from "flv.js";
 import captureVideoFrame from "capture-video-frame";
 import "../styling/videoComponent.css";
+import { videoDimensions } from "../configs.js";
 
 export default class VideoComponent extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class VideoComponent extends Component {
   }
 
   componentDidMount = () => {
+    this.props.onRef && this.props.onRef(this);
     this.setState({ hidden: this.props.hidden });
     this.buildPlayer();
     this.videoRef.current.addEventListener("canplay", () => {
@@ -71,6 +73,10 @@ export default class VideoComponent extends Component {
         <div>
           <video
             className="videoLayout"
+            style={{
+              width: `${videoDimensions.width}px`,
+              height: `${videoDimensions.height}px`
+            }}
             id="myVideo"
             ref={this.videoRef}
             onPlay={e => {
@@ -87,8 +93,8 @@ export default class VideoComponent extends Component {
               position: "absolute",
               top: "0px",
               left: "0px",
-              width: "640px",
-              height: "480px",
+              width: `${videoDimensions.width}px`,
+              height: `${videoDimensions.height}px`,
               backgroundColor: "white"
             }}
           />
@@ -98,13 +104,17 @@ export default class VideoComponent extends Component {
           className={`ui big loader ${this.state.canPlay ? null : " active"}`}
           style={{
             position: "absolute",
-            top: "220px",
-            left: "300px"
+            top: `${videoDimensions.height / 2 - 20}px`,
+            left: `${videoDimensions.width / 2 - 20}px`
           }}
         />
         <div
           hidden={this.state.playbackStarted}
           className="playOverlay"
+          style={{
+            width: `${videoDimensions.width}px`,
+            height: `${videoDimensions.height}px`
+          }}
           onClick={e => {
             this.videoRef.current.play();
             this.syncPlayer();
@@ -113,7 +123,12 @@ export default class VideoComponent extends Component {
           {this.state.canPlay && (
             <i
               className="icon play circle outline pointer_cursor playIcon"
-              style={{ fontSize: "100px" }}
+              style={{
+                position: "absolute",
+                top: `${videoDimensions.height / 2 - 50}px`,
+                left: `${videoDimensions.width / 2 - 50}px`,
+                fontSize: "60px"
+              }}
             />
           )}
         </div>

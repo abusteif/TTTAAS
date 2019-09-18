@@ -1,6 +1,4 @@
 .playOverlay {
-  width: 640px;
-  height: 480px;
   position: absolute;
   top: 0px;
 
@@ -53,21 +51,14 @@
 }
 .videoLayout {
   border: 5px groove;
-  width: 640px;
-  height: 480px;
 }
 .playIcon {
   color: rgba(255, 255, 255, 0.6);
   position: absolute;
-  top: 150px;
-  left: 240px;
 }
 .cameraButton {
   left: 42px;
 }
 .screenshot {
   position: absolute;
-  width: 640px;
-  height: 480px;
-  border: solid 2px;
 }
