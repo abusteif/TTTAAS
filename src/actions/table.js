@@ -1,3 +1,11 @@
+import table from "../apis/table.js";
+
+export const getTestCaseStepsFromApi = id => async dispatch => {
+  const response = await table.get(`/test-case/${id}`);
+  console.log(response);
+  dispatch({ type: "GET_TEST_CASES_FROM_API", payload: response.data });
+};
+
 export const updateTestCaseTable = table => {
   return {
     type: "UPDATE_TEST_CASE_TABLE",

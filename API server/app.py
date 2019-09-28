@@ -1,12 +1,17 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/test-case/*": {"origins": "*"}})
 app.config['PROPAGATE_EXCEPTIONS'] = True # To allow flask propagating exception even if debug is set to false on app
 api = Api(app)
 
 
 items = []
+with open("backend_db_apps.json") as f:
+    json_data = json.load(f)
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -49,8 +54,32 @@ class ItemList(Resource):
     def get(self):
         return {'items': items}
 
-api.add_resource(Item, '/item/<string:name>')
+
+# class TestCases(Resource):
+#     def get(self):
+#         return
+
+class TestCase(Resource):
+    def get(self, guid):
+        return {'testCases': next(filter(lambda x: x['id'] == guid, json_data["testCases"]), None)}
+
+# class TestSuites(Resource):
+#     def get(self):
+#         return
+#
+# class TestSuite(Resource):
+#     def get(self):
+#         return
+
 api.add_resource(ItemList, '/items')
+api.add_resource(Item, '/item/<string:name>')
+
+# api.add_resource(TestCases, '/testCases')
+api.add_resource(TestCase, '/test-case/<string:guid>')
+
+# api.add_resource(TestSuites, '/testSuites')
+# api.add_resource(TestSuite, '/testSuite/<string:id>')
+
 
 if __name__ == '__main__':
     app.run(debug=True)  # important to mention debug=True

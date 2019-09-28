@@ -1,6 +1,5 @@
 .playOverlay {
   position: absolute;
-  top: 0px;
 
   background: -moz-linear-gradient(
     top,
@@ -31,7 +30,6 @@
   border-bottom-right-radius: 15%;
   padding-right: 2px;
   position: absolute;
-  top: 0;
   background: -moz-linear-gradient(
     top,
     #939496 0%,
@@ -61,4 +59,5 @@
 }
 .screenshot {
   position: absolute;
+  border: 5px groove;
 }

@@ -20,7 +20,10 @@ import {
   updateName,
   updateNodeName
 } from "../actions";
-import { initializeTestCaseTable } from "../actions/table";
+import {
+  initializeTestCaseTable,
+  getTestCaseStepsFromApi
+} from "../actions/table";
 
 const uuidv4 = require("uuid/v4");
 
@@ -148,6 +151,7 @@ class Tree extends Component {
   handleOnClick = node => {
     if (node.attributes.name === "test_case") {
       this.props.initializeTestCaseTable(node.id);
+      this.props.getTestCaseStepsFromApi(node.id);
     }
   };
 
@@ -351,6 +355,7 @@ export default connect(
     selectNode,
     updateName,
     updateNodeName,
-    initializeTestCaseTable
+    initializeTestCaseTable,
+    getTestCaseStepsFromApi
   }
 )(Tree);

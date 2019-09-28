@@ -66,16 +66,30 @@ export default class VideoComponent extends Component {
       this.videoRef.current.seekable.end(0) - 0.1;
   };
 
+  descriptionHeight = 60;
   render = () => {
     const id = this.props.id || "video";
     return (
       <div>
         <div>
+          <div
+            className="ui message"
+            style={{
+              position: "absolute",
+              width: `${videoDimensions.width}px`,
+              top: 0
+            }}
+          >
+            <div className="header">{this.props.description}</div>
+          </div>
+
           <video
             className="videoLayout"
             style={{
+              position: "absolute",
               width: `${videoDimensions.width}px`,
-              height: `${videoDimensions.height}px`
+              height: `${videoDimensions.height}px`,
+              top: this.descriptionHeight
             }}
             id="myVideo"
             ref={this.videoRef}
@@ -91,7 +105,7 @@ export default class VideoComponent extends Component {
           <div
             style={{
               position: "absolute",
-              top: "0px",
+              top: this.descriptionHeight,
               left: "0px",
               width: `${videoDimensions.width}px`,
               height: `${videoDimensions.height}px`,
@@ -104,7 +118,9 @@ export default class VideoComponent extends Component {
           className={`ui big loader ${this.state.canPlay ? null : " active"}`}
           style={{
             position: "absolute",
-            top: `${videoDimensions.height / 2 - 20}px`,
+            top: `${videoDimensions.height / 2 -
+              20 +
+              this.descriptionHeight}px`,
             left: `${videoDimensions.width / 2 - 20}px`
           }}
         />
@@ -113,7 +129,8 @@ export default class VideoComponent extends Component {
           className="playOverlay"
           style={{
             width: `${videoDimensions.width}px`,
-            height: `${videoDimensions.height}px`
+            height: `${videoDimensions.height}px`,
+            top: this.descriptionHeight
           }}
           onClick={e => {
             this.videoRef.current.play();
@@ -132,7 +149,12 @@ export default class VideoComponent extends Component {
             />
           )}
         </div>
-        <div className="refreshButton">
+        <div
+          className="refreshButton"
+          style={{
+            top: `${this.descriptionHeight}px`
+          }}
+        >
           <i
             style={{
               position: "absolute",
@@ -152,7 +174,12 @@ export default class VideoComponent extends Component {
         </div>
 
         {this.state.playbackStarted && !this.state.hidden && (
-          <div className="cameraButton">
+          <div
+            className="cameraButton"
+            style={{
+              top: `${this.descriptionHeight}px`
+            }}
+          >
             <i
               style={{
                 position: "absolute",

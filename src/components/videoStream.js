@@ -131,6 +131,7 @@ class VideoStream extends Component {
           <VideoComponent
             onRef={ref => (this.child = ref)}
             streamURL={`http://${ip}:${port}/live/${streamCode}.flv`}
+            description={`TTV feed for Step ${this.props.selectedStep}`}
             screenshotHandler={newPic => {
               this.props.updatePictureTaken(newPic);
               this.props.showVideoStream(false);
@@ -143,6 +144,7 @@ class VideoStream extends Component {
           <RemoteControlPanel
             style={{ position: "absolute" }}
             clickHandler={button => this.remoteControlClickHandler(button)}
+            top="650"
           />
         </div>
       </div>

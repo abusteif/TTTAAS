@@ -7,15 +7,26 @@ import { videoDimensions } from "../configs.js";
 
 export default class EditExpectedBehaviourComponent extends Component {
   state = {
-    selection: { top: 0, left: 0, width: 0, height: 0 },
     changed: false
   };
+  defaultSelection = {
+    x: 128,
+    y: 72,
+    width: 1024,
+    height: 576,
+    rotate: 0,
+    scaleX: 1,
+    scaleY: 1
+  };
   _crop = event => {
+    console.log(event);
     const { top, left, width, height } = this.refs.cropper.cropper.cropBoxData;
     console.log(this.state);
+    if (JSON.stringify(event.detail) === JSON.stringify(this.defaultSelection))
+      return;
     if (this.state.changed === false) {
       if (
-        JSON.stringify(this.state.selection) !==
+        JSON.stringify(this.props.selection) !==
         JSON.stringify({ top, left, width, height })
       ) {
         this.setState({
@@ -26,17 +37,29 @@ export default class EditExpectedBehaviourComponent extends Component {
     }
   };
 
-  componentDidMount = () => {
-    const { top, left, width, height } = this.props.selection;
-    this.setState({
-      selection: {
-        top,
-        left,
-        width,
-        height
-      }
-    });
+  componentWillUnmount = () => {
+    console.log("unmounting...........");
+    this.setState({ changed: false });
   };
+  componentDidMount = () => {
+    console.log("MOUNTEDDDDDD");
+    const { top, left, width, height } = this.props.selection;
+    const selectionCheck = setInterval(() => {
+      if (
+        this.refs.cropper &&
+        this.refs.cropper.cropper &&
+        this.refs.cropper.cropper.cropBoxData
+      ) {
+        this.refs.cropper.cropper.setCropBoxData(this.props.selection);
+        clearInterval(selectionCheck);
+        console.log(this.refs.cropper.cropper.cropBoxData);
+      } else {
+        console.log("*********");
+      }
+    }, 10);
+  };
+
+  setInitialSelection = () => {};
 
   handleChange = baseClassName => {
     if (!this.state.changed) {
@@ -87,12 +110,8 @@ export default class EditExpectedBehaviourComponent extends Component {
             ref="cropper"
             src={this.props.image}
             crop={this._crop}
-            data={{
-              x: this.props.selection.left,
-              y: this.props.selection.top,
-              width: this.props.selection.width,
-              height: this.props.selection.height
-            }}
+            zoomable={false}
+            viewMode="1"
           />
 
           <div

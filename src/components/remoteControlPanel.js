@@ -10,7 +10,7 @@ export default class RemoteControlPanel extends Component {
         style={
           this.props.top && {
             top: this.props.top - 120,
-            left: this.props.left + 150
+            left: this.props.left && this.props.left + 150
           }
         }
       >
