@@ -1,0 +1,16 @@
+.testCaseExecuteTable {
+  height: 80%;
+  width: 100%;
+  top: 0%;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.testCaseExecuteTableContainer {
+  height: 90%;
+  width: 50%;
+  top: 10%;
+  left: 3%;
+  position: absolute;
+}

@@ -1,0 +1,54 @@
+.headerStyling {
+  width: 100%;
+  height: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.1);
+  padding-left: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.trailerStyling {
+  width: 100%;
+  height: 50px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  padding-left: 10px;
+  padding-top: 10px;
+  top: 100%;
+}
+
+.buttonStyle {
+  margin-right: 20px;
+  width: 100px;
+}
+
+td {
+  position: relative;
+}
+
+.table th,
+.table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.previewHighlighted::before {
+  -webkit-box-shadow: 0 0 10px 1px blue;
+  box-shadow: 0 0 10px 1px blue;
+}
+.previewHighlighted {
+  transform: scale(1.2);
+}
+
+.playback_started:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.playback_not_started {
+  color: rgba(0, 0, 0, 0.3);
+}

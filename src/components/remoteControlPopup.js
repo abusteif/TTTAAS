@@ -7,15 +7,15 @@ import "../styling/remoteIcon.css";
 import "../styling/tableButtons.css";
 
 const button = {
-  home: "BB TBhomeB controlB largeControlB",
-  back: "BB TBbackB controlB largeControlB",
-  up: "BB TBupB arrowB largeControlB",
-  down: "BB TBdownB arrowB largeControlB",
-  right: "BB TBrightB arrowB largeControlB",
-  left: "BB TBleftB arrowB largeControlB",
-  ok: "BB TBokB arrowB largeControlB",
-  star: "BB TBstarB controlB largeControlB",
-  undo: "BB TBundoB controlB largeControlB"
+  home: " TBB TBhomeB controlB largeControlB",
+  back: "TBB TBbackB controlB largeControlB",
+  up: "TBB TBupB arrowB largeControlB",
+  down: "TBB TBdownB arrowB largeControlB",
+  right: "TBB TBrightB arrowB largeControlB",
+  left: "TBB TBleftB arrowB largeControlB",
+  ok: "TBB TBokB arrowB largeControlB",
+  star: "TBB TBstarB controlB largeControlB",
+  undo: "TBB TBundoB controlB largeControlB"
 };
 
 class RemoteControlPopup extends Component {

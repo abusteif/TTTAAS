@@ -2,8 +2,21 @@ import table from "../apis/table.js";
 
 export const getTestCaseStepsFromApi = id => async dispatch => {
   const response = await table.get(`/test-case/${id}`);
-  console.log(response);
-  dispatch({ type: "GET_TEST_CASES_FROM_API", payload: response.data });
+  dispatch({ type: "RETRIEVE_STEPS", payload: response.data });
+};
+
+export const runTestCase = steps => async dispatch => {
+  const response = await table.post("/TTV-commands", steps, {
+    "Content-Type": "application/json"
+  });
+  dispatch({ type: "RUN_TEST_CASE", payload: response.data });
+};
+
+export const updateInitialTable = newInitialTable => {
+  return {
+    type: "UPDATE_INITIAL_TABLE",
+    payload: newInitialTable
+  };
 };
 
 export const updateTestCaseTable = table => {
@@ -13,12 +26,12 @@ export const updateTestCaseTable = table => {
   };
 };
 
-export const initializeTestCaseTable = testCaseId => {
-  return {
-    type: "RETRIEVE_STEPS",
-    payload: testCaseId
-  };
-};
+// export const initializeTestCaseTable = testCaseId => {
+//   return {
+//     type: "RETRIEVE_STEPS",
+//     payload: testCaseId
+//   };
+// };
 
 export const selectStep = (stepNumber, coords) => {
   return {
@@ -87,6 +100,18 @@ export const clickEdit = status => {
   return {
     type: "CLICK_EDIT",
     payload: status
+  };
+};
+
+export const updateDelay = (stepNumber, delay) => {
+  console.log(delay);
+  console.log(stepNumber);
+  return {
+    type: "UPDATE_DELAY",
+    payload: {
+      delay: delay,
+      stepNumber: stepNumber
+    }
   };
 };
 

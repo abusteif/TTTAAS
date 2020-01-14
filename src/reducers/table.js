@@ -1,9 +1,11 @@
 import { testCases } from "../static/mockData";
-import { videoDimensions } from "../configs.js";
+import { videoDimensions, videoScaling } from "../configs.js";
 
 import _ from "lodash";
 const INITIAL_TEST_CASE_TABLE = {
-  table: [
+  table: [{}],
+
+  initialTable: [
     {
       order: "1",
       action: "default",
@@ -17,15 +19,7 @@ const INITIAL_TEST_CASE_TABLE = {
         }
       },
 
-      delay: ""
-    }
-  ],
-  initialTable: [
-    {
-      order: "1",
-      action: "default",
-      expectedBehaviour: "",
-      delay: ""
+      delay: 1
     }
   ],
   selectedStep: "",
@@ -41,16 +35,20 @@ const INITIAL_TEST_CASE_TABLE = {
 export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
   switch (action.type) {
     case "RETRIEVE_STEPS":
-      const testSteps = testCases.filter(testCase => {
-        return testCase.id === action.payload;
-      });
-      if (!testSteps[0]) return INITIAL_TEST_CASE_TABLE;
-      if (!testSteps[0].steps) return INITIAL_TEST_CASE_TABLE;
-      return {
-        ...state,
-        table: testSteps[0].steps,
-        initialTable: testSteps[0].steps
-      };
+      console.log(action.payload);
+      const testSteps = action.payload.testCase.steps;
+      if (testSteps)
+        return {
+          ...state,
+          table: testSteps,
+          initialTable: testSteps
+        };
+      else {
+        return INITIAL_TEST_CASE_TABLE;
+      }
+
+    case "UPDATE_INITIAL_TABLE":
+      return { ...state, initialTable: action.payload };
 
     case "UPDATE_TEST_CASE_TABLE":
       return { ...state, table: action.payload };
@@ -88,10 +86,10 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
           ...newState1.table[index1].expectedBehaviour,
           image: action.payload.previewLink,
           selection: {
-            top: videoDimensions.height - 50,
-            left: videoDimensions.width - 75,
-            width: 150,
-            height: 100
+            top: 0,
+            left: 0,
+            width: videoDimensions.width / videoScaling,
+            height: videoDimensions.height / videoScaling
           }
         }
       });
@@ -117,6 +115,19 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
         }
       });
       return newState2;
+
+    case "UPDATE_DELAY":
+      const newState3 = JSON.parse(JSON.stringify({ ...state }));
+
+      const index3 = _.findIndex(newState3.table, {
+        order: action.payload.stepNumber
+      });
+      newState3.table.splice(index3, 1, {
+        ...newState3.table[index3],
+        delay: action.payload.delay
+      });
+      console.log(newState3);
+      return newState3;
 
     default:
       return state;

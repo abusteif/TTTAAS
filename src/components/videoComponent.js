@@ -3,6 +3,7 @@ import flv from "flv.js";
 import captureVideoFrame from "capture-video-frame";
 import "../styling/videoComponent.css";
 import { videoDimensions } from "../configs.js";
+// import capture_function from "./capture_frame_edited.js";
 
 export default class VideoComponent extends Component {
   constructor(props) {
@@ -54,8 +55,7 @@ export default class VideoComponent extends Component {
       type: "flv",
       url: this.props.streamURL,
       isLive: true,
-      hasAudio: false,
-      enableStashBuffer: false
+      hasAudio: false
     });
     this.player.attachMediaElement(this.videoRef.current);
     this.player.load();
@@ -66,22 +66,28 @@ export default class VideoComponent extends Component {
       this.videoRef.current.seekable.end(0) - 0.1;
   };
 
+  startPlayback = () => {
+    this.videoRef.current.play();
+  };
+
   descriptionHeight = 60;
   render = () => {
     const id = this.props.id || "video";
     return (
-      <div>
+      <div onClick={e => e.stopPropagation()} style={this.props.style || {}}>
         <div>
-          <div
-            className="ui message"
-            style={{
-              position: "absolute",
-              width: `${videoDimensions.width}px`,
-              top: 0
-            }}
-          >
-            <div className="header">{this.props.description}</div>
-          </div>
+          {this.props.description && (
+            <div
+              className="ui message"
+              style={{
+                position: "absolute",
+                width: `${videoDimensions.width}px`,
+                top: 0
+              }}
+            >
+              <div className="header">{this.props.description}</div>
+            </div>
+          )}
 
           <video
             className="videoLayout"
@@ -173,32 +179,35 @@ export default class VideoComponent extends Component {
           />
         </div>
 
-        {this.state.playbackStarted && !this.state.hidden && (
-          <div
-            className="cameraButton"
-            style={{
-              top: `${this.descriptionHeight}px`
-            }}
-          >
-            <i
+        {this.state.playbackStarted &&
+          !this.state.hidden &&
+          this.props.cameraButton && (
+            <div
+              className="cameraButton"
               style={{
-                position: "absolute",
-                fontSize: "30px",
-                top: "4px"
+                top: `${this.descriptionHeight}px`
               }}
-              onClick={() => {
-                var frame = captureVideoFrame("myVideo", "png");
-                this.setState({ flash: true });
+            >
+              <i
+                style={{
+                  position: "absolute",
+                  fontSize: "30px",
+                  top: "4px"
+                }}
+                onClick={() => {
+                  const frame = captureVideoFrame("myVideo", "png");
+                  this.setState({ flash: true });
 
-                setTimeout(() => {
-                  this.setState({ flash: false });
-                  this.props.screenshotHandler(frame.dataUri);
-                }, 80);
-              }}
-              className="camera icon large pointer_cursor"
-            />
-          </div>
-        )}
+                  setTimeout(() => {
+                    this.setState({ flash: false });
+                    this.props.screenshotHandler(frame.dataUri);
+                    console.log(frame.dataUri);
+                  }, 80);
+                }}
+                className="camera icon large pointer_cursor"
+              />
+            </div>
+          )}
       </div>
     );
   };

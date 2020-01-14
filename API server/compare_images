@@ -1,0 +1,47 @@
+from PIL import Image, ImageFile
+
+from io import BytesIO
+import json
+import base64
+from video_capture import *
+stream_url = "http://localhost:8000/live/teststream.flv"
+
+
+with open("backend_db_apps.json", "r") as be:
+    data = json.load(be)
+
+
+im = Image.open(BytesIO(base64.b64decode(data["testCases"][0]["steps"][0]["expectedBehaviour"]["image"].split(",")[1])))
+coords = data["testCases"][0]["steps"][0]["expectedBehaviour"]["selection"]
+pix = im.load()
+im.save("portal.png")
+
+portal_image = cv2.imread("portal.png")
+
+video_cap = VideoProcessing(stream_url)
+video_cap.capture_frame("python")
+
+python_image = cv2.imread("python.png")
+print(python_image.shape, portal_image.shape)
+result = cv2.matchTemplate(portal_image, python_image, cv2.TM_CCOEFF_NORMED)
+print(result)
+
+rescale_factor = 0.5
+max_height = 720
+max_width= 1280
+width =  coords["width"]
+height = coords["height"]
+x1 = coords["left"]
+y1 = coords["top"]
+x2 = width + x1
+y2 = height + y1
+print(x2, y2)
+
+for i in range(0,max_width):
+    for j in range(0,max_height):
+        if i < x1 or i > x2:
+            pix[i, j] = (10, 10, 10, 255)
+        else:
+            if j < y1 or j > y2:
+                pix[i,j] = (10,10,10,255)
+im.save("test.png")

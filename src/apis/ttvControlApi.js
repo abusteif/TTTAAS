@@ -1,5 +1,6 @@
 import axios from "axios";
+import { ttvIp } from "../configs.js";
 
 export default axios.create({
-  baseURL: "http://192.168.0.85:8060"
+  baseURL: `http://${ttvIp}:8060`
 });

@@ -3,25 +3,26 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import "../styling/expectedBehaviour.css";
 
-import { videoDimensions } from "../configs.js";
+import { videoDimensions, videoScaling } from "../configs.js";
 
 export default class EditExpectedBehaviourComponent extends Component {
   state = {
     changed: false
   };
   defaultSelection = {
-    x: 128,
-    y: 72,
-    width: 1024,
-    height: 576,
+    x: videoDimensions.width * 0.2,
+    y: videoDimensions.height * 0.2,
+    width: videoDimensions.width * 1.6,
+    height: videoDimensions.height * 1.6,
     rotate: 0,
     scaleX: 1,
     scaleY: 1
   };
   _crop = event => {
-    console.log(event);
+    console.log("current selection", event.detail);
+    console.log("default selection ", this.defaultSelection);
     const { top, left, width, height } = this.refs.cropper.cropper.cropBoxData;
-    console.log(this.state);
+    console.log("state", this.state);
     if (JSON.stringify(event.detail) === JSON.stringify(this.defaultSelection))
       return;
     if (this.state.changed === false) {
@@ -51,6 +52,7 @@ export default class EditExpectedBehaviourComponent extends Component {
         this.refs.cropper.cropper.cropBoxData
       ) {
         this.refs.cropper.cropper.setCropBoxData(this.props.selection);
+        console.log(this.props.selection);
         clearInterval(selectionCheck);
         console.log(this.refs.cropper.cropper.cropBoxData);
       } else {
@@ -80,8 +82,8 @@ export default class EditExpectedBehaviourComponent extends Component {
     this.refs.cropper.cropper.setData({
       x: 0,
       y: 0,
-      width: videoDimensions.width * 2,
-      height: videoDimensions.height * 2
+      width: videoDimensions.width / videoScaling,
+      height: videoDimensions.height / videoScaling
     });
   };
   handleCancelButtonClick = () => {
@@ -111,7 +113,8 @@ export default class EditExpectedBehaviourComponent extends Component {
             src={this.props.image}
             crop={this._crop}
             zoomable={false}
-            viewMode="1"
+            viewMode={1}
+            style={{ height: `${videoDimensions.height * 2}px` }}
           />
 
           <div

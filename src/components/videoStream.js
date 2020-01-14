@@ -16,9 +16,10 @@ import { videoDimensions } from "../configs.js";
 
 import "../styling/expectedBehaviour.css";
 import "../styling/videoComponent.css";
+import { appIp } from "../configs.js";
 
 const streamCode = "teststream";
-const ip = "localhost";
+const ip = appIp;
 const port = "8000";
 
 const sleep = milliseconds => {
@@ -26,10 +27,6 @@ const sleep = milliseconds => {
 };
 
 class VideoStream extends Component {
-  screenShotHandler = dataURI => {
-    console.log(dataURI);
-  };
-
   componentDidUpdate = () => {
     this.props.updateVideoSyncFunc(this.child.syncPlayer);
   };
@@ -125,7 +122,9 @@ class VideoStream extends Component {
 
         <div
           style={(() => {
-            return !this.props.showStream ? { display: "none" } : null;
+            return !this.props.showStream || !this.props.selectedStep
+              ? { display: "none" }
+              : null;
           })()}
         >
           <VideoComponent
@@ -139,12 +138,13 @@ class VideoStream extends Component {
             }}
             hidden={!this.props.showStream || this.props.showTakenPicture}
             playbackHandler={this.props.playbackStarted}
+            cameraButton={true}
           />
 
           <RemoteControlPanel
             style={{ position: "absolute" }}
             clickHandler={button => this.remoteControlClickHandler(button)}
-            top="650"
+            top={videoDimensions.height + 290}
           />
         </div>
       </div>

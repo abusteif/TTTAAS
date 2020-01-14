@@ -11,7 +11,7 @@ class Modal extends React.Component {
           height: "100%",
           width: "100%",
           position: "absolute",
-          backgroundColor: "rgba(0,0,0,0.7)"
+          backgroundColor: this.props.backgroundColor || "rgba(0,0,0,0.7)"
         }}
         onMouseMove={this.props.onMouseMoveHandler}
       >

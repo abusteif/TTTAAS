@@ -52,3 +52,8 @@ td {
 .playback_not_started {
   color: rgba(0, 0, 0, 0.3);
 }
+.tableStyling {
+  height: 80%;
+  width: 100%;
+  border-radius: 5px;
+}

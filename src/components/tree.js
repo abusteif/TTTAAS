@@ -21,9 +21,10 @@ import {
   updateNodeName
 } from "../actions";
 import {
-  initializeTestCaseTable,
+  //initializeTestCaseTable,
   getTestCaseStepsFromApi
 } from "../actions/table";
+import tree from "../apis/tree.js";
 
 const uuidv4 = require("uuid/v4");
 
@@ -98,59 +99,117 @@ const getTestCases = testSuiteId => {
   return testCases.filter(testCase => testCase.parentId === testSuiteId);
 };
 
-const mapTestCasesToTreeData = allApps => {
-  let treeData = [];
-
-  for (var a in allApps) {
-    var app = allApps[a];
-    treeData.push({
-      title: app.name,
-      attributes: item_types.app,
-      id: app.id,
-      parentId: null,
-      expanded: true,
-      children: (appId => {
-        var children = [];
-        var testSuites = getTestSuites(appId);
-        for (var s in testSuites) {
-          var ts = testSuites[s];
-          children.push({
-            title: ts.name,
-            attributes: item_types.test_suite,
-            id: ts.id,
-            parentId: ts.parentId,
-            expanded: true,
-            children: (testSuiteId => {
-              var testCases = getTestCases(testSuiteId);
-              var children = [];
-              for (var c in testCases) {
-                var tc = testCases[c];
-                children.push({
-                  title: tc.name,
-                  attributes: item_types.test_case,
-                  id: tc.id,
-                  parentId: tc.parentId
-                });
-              }
-              return children;
-            })(ts.id)
-          });
-        }
-        return children;
-      })(app.id)
-    });
-  }
-  return treeData;
-};
+// const mapTestCasesToTreeData = allApps => {
+//   getTreeData();
+//   let treeData = [];
+//
+//   for (var a in allApps) {
+//     var app = allApps[a];
+//     treeData.push({
+//       title: app.name,
+//       attributes: item_types.app,
+//       id: app.id,
+//       parentId: null,
+//       expanded: true,
+//       children: (appId => {
+//         var children = [];
+//         var testSuites = getTestSuites(appId);
+//         for (var s in testSuites) {
+//           var ts = testSuites[s];
+//           children.push({
+//             title: ts.name,
+//             attributes: item_types.test_suite,
+//             id: ts.id,
+//             parentId: ts.parentId,
+//             expanded: true,
+//             children: (testSuiteId => {
+//               var testCases = getTestCases(testSuiteId);
+//               var children = [];
+//               for (var c in testCases) {
+//                 var tc = testCases[c];
+//                 children.push({
+//                   title: tc.name,
+//                   attributes: item_types.test_case,
+//                   id: tc.id,
+//                   parentId: tc.parentId
+//                 });
+//               }
+//               return children;
+//             })(ts.id)
+//           });
+//         }
+//         return children;
+//       })(app.id)
+//     });
+//   }
+//   return treeData;
+// };
 
 class Tree extends Component {
-  componentDidMount() {
-    this.props.updateTree(mapTestCasesToTreeData(testApps));
-  }
+  state = {
+    dataReady: false
+  };
+
+  componentDidMount = async () => {
+    var treeData = await this.mapTestCasesToTreeData(testApps);
+    console.log(treeData);
+    this.props.updateTree(treeData);
+    this.setState({ dataReady: true });
+  };
+
+  mapTestCasesToTreeData = async () => {
+    const response = await tree.get(`/apps`);
+    const allApps = response.data.apps;
+
+    let treeData = [];
+
+    for (var a in allApps) {
+      var app = allApps[a];
+      treeData.push({
+        title: app.name,
+        attributes: item_types.app,
+        id: app.id,
+        parentId: null,
+        expanded: true,
+        children: await (async appId => {
+          var children = [];
+          let testSuites = await tree.get(`/test-suites/${appId}`);
+          testSuites = testSuites.data.testSuites;
+          for (var s in testSuites) {
+            var ts = testSuites[s];
+            children.push({
+              title: ts.name,
+              attributes: item_types.test_suite,
+              id: ts.id,
+              parentId: ts.parentId,
+              expanded: true,
+              children: await (async testSuiteId => {
+                let testCases = await tree.get(`/test-cases/${testSuiteId}`);
+                testCases = testCases.data.testCases;
+                var children = [];
+                for (var c in testCases) {
+                  var tc = testCases[c];
+                  children.push({
+                    title: tc.name,
+                    attributes: item_types.test_case,
+                    id: tc.id,
+                    parentId: tc.parentId
+                  });
+                }
+                return children;
+              })(ts.id)
+            });
+          }
+          return children;
+        })(app.id)
+      });
+    }
+    return treeData;
+  };
 
   handleOnClick = node => {
     if (node.attributes.name === "test_case") {
-      this.props.initializeTestCaseTable(node.id);
+      //  this.props.initializeTestCaseTable(node.id);
       this.props.getTestCaseStepsFromApi(node.id);
     }
   };
@@ -252,6 +311,7 @@ class Tree extends Component {
   //  title:(<EditableText text={node.title} nodeParams={{node:node, path:path, getNodeKey:getNodeKey}} onChange={this.nameChangehandler}/>),
 
   render() {
+    if (!this.state.dataReady) return <div />;
     const getNodeKey = ({ treeIndex }) => treeIndex;
 
     return (
@@ -355,7 +415,7 @@ export default connect(
     selectNode,
     updateName,
     updateNodeName,
-    initializeTestCaseTable,
+    //  initializeTestCaseTable,
     getTestCaseStepsFromApi
   }
 )(Tree);

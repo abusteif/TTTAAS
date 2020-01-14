@@ -5,6 +5,7 @@ import { testCaseTable } from "./table";
 import { videoStream } from "./videoStream";
 import { popup } from "./popup";
 import { tooltip } from "./tooltip";
+import { testCaseExecute } from "./testCaseExecute";
 import { reducer as formReducer } from "redux-form";
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   table: testCaseTable,
   popup: popup,
   videoStream: videoStream,
-  tooltip: tooltip
+  tooltip: tooltip,
+  testCaseExecution: testCaseExecute
 });
