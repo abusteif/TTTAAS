@@ -14,7 +14,6 @@ database_file = "backend_db_apps.json"
 items = []
 with open(database_file, "r") as f:
     json_data = json.load(f)
-    print("aaaaa", json_data)
 
 # class Item(Resource):
 #     parser = reqparse.RequestParser()
@@ -101,7 +100,6 @@ class TestCase(Resource):
             return data, 201
 
     def get(self, guid):
-        print(json_data["testCases"])
         return {'testCase': next(filter(lambda x: x['id'] == guid, json_data["testCases"]), None)}
 
 class TestSuites(Resource):
@@ -113,16 +111,21 @@ class Apps(Resource):
         return {'apps': json_data["apps"]}
 
 
-class TTV_commands(Resource):
+class TTV_command(Resource):
 
     def post(self):
+
         data = request.get_json()
         ttv_instance = TTV(data["baseURL"])
-        print(data)
-        for ep in data["endpoints"]:
-            print(ttv_instance.run_command(ep["endpoint"]))
-            time.sleep(ep["delay"])
-        return data, 200
+        return data, ttv_instance.run_command(data["endpoint"])
+
+# class TTV_execute(Resource):
+#
+#     def post(self):
+#
+#         data = request.get_json()
+#         ttv_instance = TTV(data["baseURL"])
+#         return data, ttv_instance.run_command(data["endpoint"])
 
 
 # class TestSuite(Resource):
@@ -138,7 +141,9 @@ api.add_resource(TestCase, '/test-case/<string:guid>')
 api.add_resource(TestSuites, '/test-suites/<string:guid>')
 api.add_resource(Apps, '/apps')
 
-api.add_resource(TTV_commands, '/TTV-commands')
+api.add_resource(TTV_command, '/TTV-command/')
+# api.add_resource(TTV_execute, '/TTV-execute/')
+
 
 
 # api.add_resource(TestSuite, '/testSuite/<string:id>')

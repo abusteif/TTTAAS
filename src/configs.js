@@ -5,5 +5,11 @@ export const videoDimensions = {
 export const videoScaling = 0.5;
 
 export const appIp = "192.168.0.196";
+export const appPort = "5000";
 
 export const ttvIp = "192.168.0.187";
+export const ttvPort = "8060";
+
+export const streamIp = "192.168.0.196";
+export const streamPort = "8000";
+export const streamCode = "teststream";

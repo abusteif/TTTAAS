@@ -5,13 +5,6 @@ export const getTestCaseStepsFromApi = id => async dispatch => {
   dispatch({ type: "RETRIEVE_STEPS", payload: response.data });
 };
 
-export const runTestCase = steps => async dispatch => {
-  const response = await table.post("/TTV-commands", steps, {
-    "Content-Type": "application/json"
-  });
-  dispatch({ type: "RUN_TEST_CASE", payload: response.data });
-};
-
 export const updateInitialTable = newInitialTable => {
   return {
     type: "UPDATE_INITIAL_TABLE",

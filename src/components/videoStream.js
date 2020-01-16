@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   showVideoStream,
-  playbackStarted,
+  // playbackStarted,
   showPicture,
   updatePictureTaken,
   updateVideoSyncFunc
@@ -16,11 +16,7 @@ import { videoDimensions } from "../configs.js";
 
 import "../styling/expectedBehaviour.css";
 import "../styling/videoComponent.css";
-import { appIp } from "../configs.js";
-
-const streamCode = "teststream";
-const ip = appIp;
-const port = "8000";
+import { streamIp, streamCode, streamPort } from "../configs.js";
 
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -129,7 +125,7 @@ class VideoStream extends Component {
         >
           <VideoComponent
             onRef={ref => (this.child = ref)}
-            streamURL={`http://${ip}:${port}/live/${streamCode}.flv`}
+            streamURL={`http://${streamIp}:${streamPort}/live/${streamCode}.flv`}
             description={`TTV feed for Step ${this.props.selectedStep}`}
             screenshotHandler={newPic => {
               this.props.updatePictureTaken(newPic);
@@ -137,7 +133,7 @@ class VideoStream extends Component {
               this.props.showPicture(true);
             }}
             hidden={!this.props.showStream || this.props.showTakenPicture}
-            playbackHandler={this.props.playbackStarted}
+            // playbackHandler={this.props.playbackStarted}
             cameraButton={true}
           />
 
@@ -167,7 +163,7 @@ export default connect(
   mapStateToProps,
   {
     showVideoStream,
-    playbackStarted,
+    // playbackStarted,
     updatePreview,
     selectStep,
     showPicture,

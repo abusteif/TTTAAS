@@ -1,13 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  showVideoStream,
-  playbackStarted,
-  showPicture,
-  updatePictureTaken,
-  updateVideoSyncFunc
-} from "../actions/videoStream";
-import { updatePreview, selectStep } from "../actions/table";
 import { pressTtvKey } from "../actions/ttvControl";
 import VideoComponent from "./videoComponent";
 import RemoteControlPanel from "./remoteControlPanel";
@@ -26,65 +18,81 @@ import "../styling/videoComponent.css";
 import "react-table/react-table.css";
 
 import "../styling/testCaseExecute.css";
-import { appIp } from "../configs.js";
-
-const streamCode = "teststream";
-const ip = appIp;
-const port = "8000";
-
-const sleep = milliseconds => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-};
+import { streamIp, streamPort, streamCode } from "../configs.js";
 
 class TestCaseExecute extends Component {
+  state = {
+    completeTestCase: [],
+    currentTeststepsId: 0,
+    videoReady: false
+  };
   componentDidMount = () => {
-    // this.messagesEnd.scrollIntoView({ behavior: "smooth" });
     this.startPlayback = this.child.startPlayback;
+    this.setState({
+      completeTestCase: this.props.table
+    });
   };
 
-  renderTable = () => {};
-  //   render = () => {
-  //     return (
-  //       <div>
-  //         <div
-  //           style={
-  //             {
-  //               // overflowY: "scroll",
-  //               // height: "95%",
-  //               // position: "absolute",
-  //               // color: "white",
-  //               // backgroundColor: "white",
-  //               // width: "20%",
-  //               // height: "20%",
-  //               // left: "20%"
-  //             }
-  //           }
-  //         >
-  //           {this.renderReactTable()}
-  //           <div
-  //             style={{ float: "left", clear: "both" }}
-  //             ref={el => {
-  //               this.messagesEnd = el;
-  //             }}
-  //           ></div>
-  //         </div>
-  //         <VideoComponent
-  //           style={{ position: "absolute", top: "10%", left: "70%" }}
-  //           onRef={ref => (this.child = ref)}
-  //           streamURL={`http://${ip}:${port}/live/${streamCode}.flv`}
-  //         />
-  //       </div>
-  //     );
-  //   };
-  // }
+  componentDidUpdate = () => {
+    this.lastRow.scrollIntoView({ behavior: "smooth" });
+  };
+
+  componentWillUnmount = () => {
+    this.setState({});
+  };
+
+  handleButtonStatus = buttonName => {
+    switch (buttonName) {
+      case "execute":
+        return `ui primary button ${
+          this.state.videoReady && !this.props.testCaseExecuting
+            ? ""
+            : "disabled"
+        }`;
+      case "stop":
+        return `ui button red ${
+          this.props.testCaseExecuting ? "" : "disabled"
+        }`;
+      case "cancel":
+        return `ui button ${!this.props.testCaseExecuting ? "" : "disabled"}`;
+    }
+  };
+
+  executeTestCase = () => {};
 
   renderTableColumns = () => {
-    return this.props.table.map(step => {
+    if (this.state.completeTestCase.length === 0) return;
+    const lastStep = JSON.parse(
+      JSON.stringify(this.state.completeTestCase[this.state.currentTeststepsId])
+    );
+    lastStep["order"] = (
+      <div
+        className="anchorDiv"
+        ref={el => {
+          this.lastRow = el;
+        }}
+      >
+        <div className="textDiv"> {lastStep.order}</div>
+      </div>
+    );
+    const extendedTestSteps = [
+      ...this.state.completeTestCase.slice(0, this.state.currentTeststepsId),
+      lastStep
+    ];
+    return extendedTestSteps.map(step => {
       return {
         stepId: step.order,
         action: step.action,
-        expectedBehaviour: step.expectedBehaviour.image ? "picture" : "-",
-        result: "pass"
+        expectedBehaviour: step.expectedBehaviour.image ? (
+          <i
+            className="file image outline icon large pointer_cursor "
+            style={{ opacity: "0.9", paddingLeft: "45%" }}
+          />
+        ) : (
+          ""
+        ),
+        result: "pass",
+        delay: step.delay
       };
     });
   };
@@ -98,6 +106,7 @@ class TestCaseExecute extends Component {
         result: "pass"
       }
     ];
+
     return (
       <div
         className="mainPanel"
@@ -113,11 +122,13 @@ class TestCaseExecute extends Component {
         <VideoComponent
           style={{ position: "absolute", left: "56%", top: "10%" }}
           onRef={ref => (this.child = ref)}
-          streamURL={`http://${ip}:${port}/live/${streamCode}.flv`}
+          streamURL={`http://${streamIp}:${streamPort}/live/${streamCode}.flv`}
           description={`TTV feed for the execution of ${this.props.testCase}`}
           hidden={false}
-          playbackHandler={this.props.playbackStarted}
           cameraButton={false}
+          videoCanPlay={() => {
+            this.setState({ videoReady: true });
+          }}
         />
 
         <div className="testCaseExecuteTableContainer">
@@ -140,16 +151,6 @@ class TestCaseExecute extends Component {
                         stepId={props.original.stepId}
                         onClick={() => {}}
                       />
-                      // <div
-                      //   style={{
-                      //     height: "30px",
-                      //     width: "30px",
-                      //     backgroundColor: "green",
-                      //     color: "red"
-                      //   }}
-                      // >
-                      //   testing
-                      // </div>
                     )
                   },
                   {
@@ -159,6 +160,10 @@ class TestCaseExecute extends Component {
                   {
                     Header: "Result",
                     accessor: "result"
+                  },
+                  {
+                    Header: "Delay",
+                    accessor: "delay"
                   }
                 ]
               }
@@ -178,15 +183,24 @@ class TestCaseExecute extends Component {
             }}
           >
             <button
-              className={"ui primary button"}
+              className={this.handleButtonStatus("execute")}
               onClick={() => {
                 this.startPlayback();
+                if (!this.props.testCaseExecuting)
+                  this.props.startTestCaseExecution();
+                if (
+                  this.state.currentTeststepsId <
+                  this.state.completeTestCase.length
+                )
+                  this.setState({
+                    currentTeststepsId: this.state.currentTeststepsId + 1
+                  });
               }}
             >
               Execute Test Case
             </button>
             <button
-              className="ui button red"
+              className={this.handleButtonStatus("stop")}
               onClick={() => {
                 this.props.stopTestCaseExecution();
               }}
@@ -195,7 +209,7 @@ class TestCaseExecute extends Component {
             </button>
 
             <button
-              className="ui button"
+              className={this.handleButtonStatus("cancel")}
               onClick={() => {
                 this.props.closeTestExecuteOverlay();
               }}
@@ -211,20 +225,15 @@ class TestCaseExecute extends Component {
 
 const mapStateToProps = state => {
   return {
-    table: state.table.table
+    table: state.table.table,
+    testCaseExecution: state.testCaseExecution,
+    testCaseExecuting: state.testCaseExecution.testCaseExecuting
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    showVideoStream,
-    playbackStarted,
-    updatePreview,
-    selectStep,
-    showPicture,
-    updatePictureTaken,
-    updateVideoSyncFunc,
     pressTtvKey,
     startTestCaseExecution,
     stopTestCaseExecution,

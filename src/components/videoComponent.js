@@ -24,6 +24,7 @@ export default class VideoComponent extends Component {
     this.buildPlayer();
     this.videoRef.current.addEventListener("canplay", () => {
       this.setState({ canPlay: true });
+      this.props.videoCanPlay && this.props.videoCanPlay();
     });
   };
 
@@ -101,7 +102,7 @@ export default class VideoComponent extends Component {
             ref={this.videoRef}
             onPlay={e => {
               this.setState({ playbackStarted: true });
-              this.props.playbackHandler(true);
+              // this.props.playbackHandler && this.props.playbackHandler(true);
             }}
             onClick={this.syncPlayer}
           />
@@ -171,7 +172,7 @@ export default class VideoComponent extends Component {
             onClick={() => {
               this.player.destroy();
               this.buildActualPlayer();
-              this.props.playbackHandler(false);
+              // this.props.playbackHandler(false);
 
               this.setState({ playbackStarted: false, canPlay: false });
             }}

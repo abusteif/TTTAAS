@@ -14,3 +14,16 @@
   left: 3%;
   position: absolute;
 }
+
+.anchorDiv {
+  float: left;
+  clear: both;
+  height: 400%;
+  width: 2px;
+  top: -300px;
+  position: relative;
+}
+.textDiv {
+  position: relative;
+  top: 300px;
+}

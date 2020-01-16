@@ -4,12 +4,12 @@ export const showVideoStream = status => {
     payload: status
   };
 };
-export const playbackStarted = status => {
-  return {
-    type: "PLAYBACK_STARTED",
-    payload: status
-  };
-};
+// export const playbackStarted = status => {
+//   return {
+//     type: "PLAYBACK_STARTED",
+//     payload: status
+//   };
+// };
 
 export const showPicture = status => {
   return {

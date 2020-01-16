@@ -54,29 +54,20 @@
 .TBenlargedButton {
   transform: scale(1.2);
 }
-.TBhomeB {
-  top: -1px;
-  left: -1px;
-}
 
 .TBhomeB::before {
   content: "\f015";
   font-size: 20px;
   top: -5px;
-  left: 5px;
+  padding-left: 8px;
   position: relative;
-}
-
-.TBbackB {
-  top: -1px;
-  left: -1px;
 }
 
 .TBbackB::before {
   content: "\f177";
   font-size: 20px;
   top: -5px;
-  left: 4px;
+  padding-left: 8px;
   position: relative;
 }
 
@@ -92,6 +83,14 @@
   left: -1px;
 }
 
+.TBundoB,
+.TBstarB,
+.TBbackB,
+.TBhomeB {
+  top: -1px;
+  left: -1px;
+  text-align: center;
+}
 .TBdownB::before {
   content: "\f107";
   top: -8px;
@@ -99,15 +98,10 @@
   position: relative;
 }
 
-.TBundoB {
-  top: -1px;
-  left: -1px;
-}
-
 .TBundoB::before {
   content: "\f0e2";
   top: -2px;
-  left: 0px;
+  padding-left: 10px;
   font-size: 15px;
   position: relative;
 }
@@ -132,16 +126,11 @@
   position: relative;
 }
 
-.TBstarB {
-  top: -1px;
-  left: -1px;
-}
-
 .TBstarB::before {
   content: "\f069";
   top: -2px;
-  left: 5px;
-  font-size: 13px;
+  left: 4px;
+  font-size: 15px;
   position: relative;
 }
 

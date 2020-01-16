@@ -13,8 +13,7 @@ import {
   updateSelection,
   expectedBehaviourSelectionChanged,
   updateDelay,
-  updateInitialTable,
-  runTestCase
+  updateInitialTable
 } from "../actions/table";
 
 import {
@@ -43,9 +42,6 @@ import Tooltip from "./tooltip";
 import EditExpectedBehaviourComponent from "./editExpectedBehaviourComponent";
 import Delay from "./delay.js";
 import TestCaseExecute from "./testCaseExecute";
-
-import ReactTable from "react-table";
-import "react-table/react-table.css";
 
 import table from "../apis/table.js";
 
@@ -136,6 +132,12 @@ class TestCaseTable extends Component {
     this.props.updateTestCaseTable(newTable);
   };
 
+  handleRemoveExpectedBehaviour = stepId => {
+    const newTable = JSON.parse(JSON.stringify([...this.props.table]));
+    newTable[stepId - 1]["expectedBehaviour"]["image"] = "";
+    this.props.updateTestCaseTable(newTable);
+  };
+
   updateInitialTable = () => {
     const newInitialTable = JSON.parse(JSON.stringify([...this.props.table]));
     this.props.updateInitialTable(newInitialTable);
@@ -159,6 +161,7 @@ class TestCaseTable extends Component {
         return this.props.table.length !== 1;
       case "preview":
       case "edit":
+      case "removeExpectedBehaviour":
         return extraValue;
     }
   };
@@ -242,34 +245,204 @@ class TestCaseTable extends Component {
     return condition ? classOne : classTwo;
   };
 
-  displayActions = stepId => {};
+  renderRows() {
+    if (!this.props.table[0].order) return;
 
-  renderTableColumns = () => {
-    console.log(this.props.table);
     return this.props.table.map(step => {
-      return {
-        stepId: step.order,
-        action: (
-          <RemoteControlPopup
-            action={step.action}
-            stepId={step.stepId}
-            onClick={() => {}}
-          />
-        ),
-        expectedBehaviour: step.expectedBehaviour.image ? "picture" : "-",
-        move: "pass"
-      };
+      return (
+        <tr
+          id={`step${step.order}`}
+          key={step.order}
+          onClick={() => {
+            this.handleStepSelect(step.order);
+          }}
+        >
+          <th scope="row">{step.order}</th>
+
+          <td>
+            <RemoteControlPopup
+              action={step.action}
+              stepId={step.order}
+              onClick={() => {
+                this.handleActionClicked(step.order);
+              }}
+            />
+          </td>
+          <td>
+            {this.handleTableButtonsDisplay(
+              "preview",
+              step.action,
+              step.order,
+              step.expectedBehaviour.image
+            ) && (
+              <i
+                id={`table_preview${step.order}`}
+                className={(() => {
+                  let previewClass =
+                    "file image outline icon large pointer_cursor ";
+
+                  previewClass =
+                    this.props.previewClicked == step.order
+                      ? previewClass + "previewHighlighted"
+                      : previewClass + "";
+                  return previewClass;
+                })()}
+                style={{ opacity: "0.9" }}
+                onClick={() => {
+                  this.handlePreviewClicked(
+                    step.order,
+                    step.expectedBehaviour.image
+                  );
+                  this.handleOnMouseLeave();
+                }}
+                onMouseOver={() => {
+                  this.handleOnMouseHover(
+                    `table_preview${step.order}`,
+                    "View current expected behaviour"
+                  );
+                }}
+                onMouseLeave={this.handleOnMouseLeave}
+              />
+            )}
+            {this.handleTableButtonsDisplay(
+              "edit",
+              step.action,
+              step.order,
+              step.expectedBehaviour.image
+            ) && (
+              <i
+                id={`table_edit${step.order}`}
+                className="edit icon large pointer_cursor"
+                style={{ opacity: "0.9" }}
+                onClick={() => {
+                  this.props.clickEdit(true);
+                  this.handleOnMouseLeave();
+                }}
+                onMouseOver={() => {
+                  this.handleOnMouseHover(
+                    `table_edit${step.order}`,
+                    "Edit current expected behaviour"
+                  );
+                }}
+                onMouseLeave={this.handleOnMouseLeave}
+              />
+            )}
+
+            <i
+              id={`table_camera${step.order}`}
+              className={"camera icon large playback_started "}
+              onClick={() => {
+                this.props.clickCamera(step.order);
+                this.props.showPicture(false);
+                this.props.showVideoStream(true);
+                this.handleOnMouseLeave();
+              }}
+              onMouseOver={() => {
+                this.handleOnMouseHover(
+                  `table_camera${step.order}`,
+                  "Set/Re-capture an expected behaviour"
+                );
+              }}
+              onMouseLeave={this.handleOnMouseLeave}
+            />
+
+            {this.handleTableButtonsDisplay(
+              "removeExpectedBehaviour",
+              step.action,
+              step.order,
+              step.expectedBehaviour.image
+            ) && (
+              <i
+                id={`remove_expected_behaviour${step.order}`}
+                className="close icon large pointer_cursor"
+                style={{ opacity: "0.9" }}
+                onClick={() => {
+                  this.handleRemoveExpectedBehaviour(step.order);
+                  this.handleOnMouseLeave();
+                }}
+                onMouseOver={() => {
+                  this.handleOnMouseHover(
+                    `remove_expected_behaviour${step.order}`,
+                    "Remove current expected behaviour"
+                  );
+                }}
+                onMouseLeave={this.handleOnMouseLeave}
+              />
+            )}
+
+            {this.props.tooltip.hovered && (
+              <Tooltip
+                top={this.props.tooltip.coords.top}
+                left={this.props.tooltip.coords.left}
+                text={this.props.tooltip.text}
+              />
+            )}
+          </td>
+          <td>
+            <Delay
+              stepId={step.order}
+              initialValue={step.delay}
+              handleButtonClick={(stepId, delay) =>
+                this.props.updateDelay(stepId, delay)
+              }
+            />
+          </td>
+
+          <td className="pt-3-half">
+            {this.handleTableButtonsDisplay(
+              "down",
+              step.action,
+              step.order
+            ) && (
+              <i
+                style={{ position: "absolute", left: "25%", opacity: "0.9" }}
+                className="long arrow alternate down icon pointer_cursor large"
+                aria-hidden="true"
+                onClick={() => this.handleDownButtonClick(step.order)}
+              />
+            )}
+            {this.handleTableButtonsDisplay("up", step.action, step.order) && (
+              <i
+                style={{ position: "absolute", left: "33%", opacity: "0.9" }}
+                onClick={() => this.handleUpButtonClick(step.order)}
+                className="long arrow alternate up icon pointer_cursor large"
+                aria-hidden="true"
+              />
+            )}
+            {this.handleTableButtonsDisplay(
+              "remove",
+              step.action,
+              step.order
+            ) && (
+              <i
+                style={{ position: "absolute", left: "42%", opacity: "0.9" }}
+                className="trash icon pointer_cursor large "
+                onClick={() => {
+                  this.handleRemoveButton(step.order);
+                }}
+              />
+            )}
+            {this.handleTableButtonsDisplay(
+              "duplicate",
+              step.action,
+              step.order
+            ) && (
+              <i
+                style={{ position: "absolute", left: "55%", opacity: "0.9" }}
+                className="copy icon pointer_cursor large"
+                onClick={() => this.handleDuplicateStep(step.order)}
+              />
+            )}
+          </td>
+        </tr>
+      );
     });
-  };
+  }
 
   render() {
     const titleText = this.props.selectedNode.title
       ? this.props.selectedNode.title
       : "Please select a test case";
-
-    if (!this.props.table[0].order) return <div />;
-    console.log(this.props.table.length);
-
     if (this.props.selectedNode.title)
       return (
         <div style={{ height: "100%" }}>
@@ -284,44 +457,188 @@ class TestCaseTable extends Component {
             />
             {titleText}
           </div>
-          <ReactTable
-            data={this.renderTableColumns()}
-            showPagination={false}
-            columns={[
-              {
-                columns: [
-                  {
-                    Header: "Step",
-                    accessor: "stepId",
-                    id: props => `#step${props.original.stepId}`
-                  },
-                  {
-                    Header: "Action",
-                    accessor: "action"
-                  },
-                  {
-                    Header: "Expected Behaviour",
-                    accessor: "expectedBehaviour"
-                  },
-                  {
-                    Header: "Move",
-                    accessor: "move"
+
+          <div className="card" style={{ height: "85%" }}>
+            <div className="card-body" style={{ height: "100%" }}>
+              <div
+                id="table"
+                className="table-editable"
+                style={{ height: "100%" }}
+              >
+                <table className="table table-bordered table-responsive-md table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th className="text-center" style={{ width: "10%" }}>
+                        Step
+                      </th>
+                      <th className="text-center" style={{ width: "15%" }}>
+                        Action
+                      </th>
+                      <th className="text-center" style={{ width: "30%" }}>
+                        Expected Behaviour
+                      </th>
+                      <th className="text-center" style={{ width: "10%" }}>
+                        Delay
+                      </th>
+                      <th className="text-center">Move</th>
+                    </tr>
+                  </thead>
+                </table>
+                <div style={{ overflowY: "scroll", height: "95%" }}>
+                  <table className="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th
+                          className="text-center"
+                          style={{ width: "10.1%" }}
+                        />
+                        <th
+                          className="text-center"
+                          style={{ width: "15.2%" }}
+                        />
+                        <th
+                          className="text-center"
+                          style={{ width: "30.2%" }}
+                        />
+                        <th
+                          className="text-center"
+                          style={{ width: "10.2%" }}
+                        />
+                        <th
+                          className="text-center"
+                          style={{ width: "34.3%" }}
+                        />
+                      </tr>
+                    </thead>
+                    <tbody>{this.renderRows()}</tbody>
+                  </table>
+                  <span className="table-add float-left mb-3 mr-2">
+                    <i
+                      style={{ cursor: "pointer" }}
+                      className="fas fa-plus fa-2x grey"
+                      aria-hidden="true"
+                      onClick={this.handleAddStep}
+                    />
+                    {this.props.actionClicked && (
+                      <Modal
+                        anchorId="modal"
+                        closeModalHandler={() => this.props.clickAction(null)}
+                      >
+                        <RemoteControlPanel
+                          clickHandler={this.remoteControlClickHandler}
+                          top={this.props.selectedStepCoords.top}
+                          left={this.props.selectedStepCoords.left}
+                        />
+                      </Modal>
+                    )}
+                  </span>
+                  {this.props.previewClicked && (
+                    <Modal
+                      anchorId="modal"
+                      closeModalHandler={() =>
+                        this.props.clickPreview(null, "")
+                      }
+                    >
+                      <ExpectedBehaviourPreview
+                        previewPic={
+                          this.props.table[this.props.selectedStep - 1]
+                            .expectedBehaviour.image
+                        }
+                        pictureLink={this.props.previewLink}
+                        top={this.props.selectedStepCoords.top}
+                        left={this.props.selectedStepCoords.left}
+                      />
+                    </Modal>
+                  )}
+
+                  {this.props.editClicked && (
+                    <Modal
+                      anchorId="modal"
+                      closeModalHandler={() => {
+                        if (this.props.expectedBehaviourEdited) {
+                          alert(
+                            "Expected behaviour selection has been edited. Please save or discard the change to proceed"
+                          );
+                        } else this.props.clickEdit(false);
+                      }}
+                    >
+                      <EditExpectedBehaviourComponent
+                        image={
+                          this.props.table[this.props.selectedStep - 1]
+                            .expectedBehaviour.image
+                        }
+                        selection={
+                          this.props.table[this.props.selectedStep - 1]
+                            .expectedBehaviour.selection
+                        }
+                        saveButtonHandler={({ top, left, width, height }) => {
+                          this.props.updateSelection(
+                            this.props.selectedStep,
+                            top,
+                            left,
+                            width,
+                            height
+                          );
+                          this.props.clickEdit(false);
+                          this.props.expectedBehaviourSelectionChanged(false);
+                        }}
+                        cancelButtonHandler={() => {
+                          {
+                            this.props.clickEdit(false);
+                            this.props.expectedBehaviourSelectionChanged(false);
+                          }
+                        }}
+                        // inverseSelectionButtonHandler={() => {
+                        //   this.props.clickEdit(false);
+                        //   this.props.expectedBehaviourSelectionChanged(false);
+                        // }}
+                        handleChange={() => {
+                          this.props.expectedBehaviourSelectionChanged(true);
+                        }}
+                      />
+                    </Modal>
+                  )}
+
+                  {this.props.testCaseExecution.testExecuteOverlayOpen && (
+                    <Modal
+                      anchorId="modal"
+                      closeModalHandler={() => {
+                        if (this.props.testCaseExecution.testCaseExecuting)
+                          return;
+                        else {
+                          return this.props.closeTestExecuteOverlay();
+                        }
+                      }}
+                    >
+                      <TestCaseExecute />
+                    </Modal>
+                  )}
+                </div>
+
+                <br />
+                <button
+                  onClick={this.handleSaveClick}
+                  className={
+                    "ui primary button " + this.getButtonStatus("save")
                   }
-                ]
-              }
-            ]}
-            defaultPageSize={this.props.table.length}
-            className="-striped -highlight tableStyling"
-            getTrProps={(state, rowInfo) => {
-              if (rowInfo && rowInfo.row) {
-                return {
-                  onClick: e => {
-                    this.handleStepSelect(rowInfo.index);
-                  }
-                };
-              }
-            }}
-          />
+                >
+                  Save
+                </button>
+                <button
+                  className={"ui button " + this.getButtonStatus("discard")}
+                  onClick={this.handleDiscardClick}
+                >
+                  Discard
+                </button>
+                <button
+                  onClick={this.handleRunStepClick}
+                  className={"ui button " + this.getButtonStatus("run")}
+                >
+                  Run Test Case
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       );
     else return <div />;
@@ -346,7 +663,7 @@ const mapStateToProps = state => {
     previewLink: state.table.previewLink,
     tooltip: state.tooltip,
     video: state.videoStream,
-    testCaseExecute: state.testCaseExecution
+    testCaseExecution: state.testCaseExecution
   };
 };
 
@@ -370,7 +687,6 @@ export default connect(
     expectedBehaviourSelectionChanged,
     updateDelay,
     updateInitialTable,
-    runTestCase,
     startTestCaseExecution,
     stopTestCaseExecution,
     openTestExecuteOverlay,
