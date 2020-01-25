@@ -7,19 +7,19 @@ const INITIAL_TEST_CASE_TABLE = {
 
   initialTable: [
     {
-      order: "1",
-      action: "default",
-      expectedBehaviour: {
-        image: "",
-        selection: {
-          top: 0,
-          left: 0,
-          width: 0,
-          height: 0
-        }
-      },
-
-      delay: 1
+      // order: "1",
+      // action: "default",
+      // expectedBehaviour: {
+      //   image: "",
+      //   selection: {
+      //     top: 0,
+      //     left: 0,
+      //     width: 0,
+      //     height: 0
+      //   }
+      // },
+      //
+      // delay: 1
     }
   ],
   selectedStep: "",
@@ -35,7 +35,8 @@ const INITIAL_TEST_CASE_TABLE = {
 export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
   switch (action.type) {
     case "RETRIEVE_STEPS":
-      console.log(action.payload);
+      if (!action.payload.testCase) return INITIAL_TEST_CASE_TABLE;
+
       const testSteps = action.payload.testCase.steps;
       if (testSteps)
         return {
@@ -53,6 +54,9 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
     case "UPDATE_TEST_CASE_TABLE":
       return { ...state, table: action.payload };
 
+    case "RESET_tABLE":
+      return INITIAL_TEST_CASE_TABLE;
+
     case "SELECT_STEP":
       return {
         ...state,
@@ -65,14 +69,6 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
 
     case "CLICK_CAMERA":
       return { ...state, cameraClicked: action.payload.stepNumber };
-
-    case "CLICK_PREVIEW":
-      console.log(state);
-      return {
-        ...state,
-        previewClicked: action.payload.stepNumber,
-        previewLink: action.payload.previewLink
-      };
 
     case "UPDATE_PREVIEW":
       const newState1 = JSON.parse(JSON.stringify({ ...state }));
@@ -126,7 +122,6 @@ export const testCaseTable = (state = INITIAL_TEST_CASE_TABLE, action) => {
         ...newState3.table[index3],
         delay: action.payload.delay
       });
-      console.log(newState3);
       return newState3;
 
     default:

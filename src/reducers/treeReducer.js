@@ -31,6 +31,18 @@ export const updateTreeReducer = (state = INITIAL_STATE, action) => {
     case "UPDATE_NAME":
       console.log(action.payload);
       return { ...state, formInitials: { name: action.payload.name } };
+
+    case "UNSELECT_NODE":
+      return {
+        ...state,
+        selectedNode: {
+          title: "",
+          attributes: {
+            id: ""
+          }
+        }
+      };
+      return;
     default:
       return state;
   }

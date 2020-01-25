@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { pressTtvKey } from "../actions/ttvControl";
+import { pressTtvKey, executeStep } from "../actions/ttvControl";
 import VideoComponent from "./videoComponent";
 import RemoteControlPanel from "./remoteControlPanel";
 import RemoteControlPopup from "./remoteControlPopup";
@@ -19,12 +19,17 @@ import "react-table/react-table.css";
 
 import "../styling/testCaseExecute.css";
 import { streamIp, streamPort, streamCode } from "../configs.js";
+import { remoteControlButtonMapping } from "../utils.js";
 
 class TestCaseExecute extends Component {
   state = {
     completeTestCase: [],
     currentTeststepsId: 0,
-    videoReady: false
+    currentResult: "running",
+    videoReady: false,
+    newTestStepsTable: [],
+    stopClicked: false,
+    executionComplete: false
   };
   componentDidMount = () => {
     this.startPlayback = this.child.startPlayback;
@@ -33,8 +38,52 @@ class TestCaseExecute extends Component {
     });
   };
 
-  componentDidUpdate = () => {
-    this.lastRow.scrollIntoView({ behavior: "smooth" });
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.stopClicked) {
+      this.setState({ stopClicked: false });
+      return;
+    }
+    if (
+      this.state.newTestStepsTable.length <
+      this.state.currentTeststepsId + 1
+    ) {
+      if (this.state.currentTeststepsId < this.state.completeTestCase.length) {
+        const lastStep = JSON.parse(
+          JSON.stringify(
+            this.state.completeTestCase[this.state.currentTeststepsId]
+          )
+        );
+        lastStep["result"] = "running";
+
+        this.setState({
+          newTestStepsTable: (this.state.newTestStepsTable = [
+            ...this.state.newTestStepsTable,
+            lastStep
+          ])
+        });
+      }
+      if (prevState.currentTeststepsId !== this.state.currentTeststepsId) {
+        const updatedResult = JSON.parse(
+          JSON.stringify(this.state.newTestStepsTable)
+        );
+        if (this.state.currentTeststepsId === 0) {
+          updatedResult[this.state.currentTeststepsId][
+            "result"
+          ] = this.state.currentResult;
+          this.setState({
+            newTestStepsTable: updatedResult
+          });
+        } else {
+          updatedResult[this.state.currentTeststepsId - 1][
+            "result"
+          ] = this.state.currentResult;
+          this.setState({
+            newTestStepsTable: updatedResult
+          });
+        }
+      }
+    }
+    this.lastRow && this.lastRow.scrollIntoView({ behavior: "smooth" });
   };
 
   componentWillUnmount = () => {
@@ -58,30 +107,40 @@ class TestCaseExecute extends Component {
     }
   };
 
-  executeTestCase = () => {};
-
   renderTableColumns = () => {
     if (this.state.completeTestCase.length === 0) return;
-    const lastStep = JSON.parse(
-      JSON.stringify(this.state.completeTestCase[this.state.currentTeststepsId])
-    );
-    lastStep["order"] = (
-      <div
-        className="anchorDiv"
-        ref={el => {
-          this.lastRow = el;
-        }}
-      >
-        <div className="textDiv"> {lastStep.order}</div>
-      </div>
-    );
-    const extendedTestSteps = [
-      ...this.state.completeTestCase.slice(0, this.state.currentTeststepsId),
-      lastStep
-    ];
-    return extendedTestSteps.map(step => {
+
+    return this.state.newTestStepsTable.map(step => {
+      var statusIconClass = "";
+      switch (step.result) {
+        case "running":
+          statusIconClass = "hourglass";
+          break;
+        case "Pass":
+          statusIconClass = "greenTick";
+          break;
+        case "Fail":
+          statusIconClass = "redCross";
+          break;
+        default:
+          break;
+      }
+
+      const stepOrder =
+        step.order === this.state.currentTeststepsId + 1 ? (
+          <div
+            className="anchorDiv"
+            ref={el => {
+              this.lastRow = el;
+            }}
+          >
+            <div className="textDiv"> {step.order}</div>
+          </div>
+        ) : (
+          step.order
+        );
       return {
-        stepId: step.order,
+        stepId: stepOrder,
         action: step.action,
         expectedBehaviour: step.expectedBehaviour.image ? (
           <i
@@ -91,22 +150,56 @@ class TestCaseExecute extends Component {
         ) : (
           ""
         ),
-        result: "pass",
+        result: <i className={statusIconClass} />,
         delay: step.delay
       };
     });
   };
 
-  render = () => {
-    const data = [
-      {
-        stepId: "1",
-        action: "ok",
-        expectedBehaviour: "picture",
-        result: "pass"
-      }
-    ];
+  updateResult = result => {};
 
+  runTestCase = async () => {
+    await this.setState({
+      stopClicked: false,
+      currentTeststepsId: 0,
+      newTestStepsTable: [],
+      currentResult: "running"
+    });
+    this.startPlayback();
+    if (!this.props.testCaseExecuting) this.props.startTestCaseExecution();
+
+    if (this.state.currentTeststepsId === 0) {
+      for (var i in [0, 0])
+        await this.props.executeStep("home", { image: "" }, 1);
+    }
+
+    for (var step in this.state.completeTestCase) {
+      if (!this.props.testCaseExecuting || this.state.stopClicked) return;
+      this.child.syncPlayer();
+
+      const result = (await this.props.executeStep(
+        remoteControlButtonMapping(
+          this.state.completeTestCase[this.state.currentTeststepsId]["action"]
+        ),
+        this.state.completeTestCase[this.state.currentTeststepsId][
+          "expectedBehaviour"
+        ],
+        this.state.completeTestCase[this.state.currentTeststepsId]["delay"]
+      ))
+        ? "Pass"
+        : "Fail";
+
+      if (!this.props.testCaseExecuting || this.state.stopClicked) return;
+      this.setState({
+        currentResult: result,
+        currentTeststepsId: this.state.currentTeststepsId + 1
+      });
+      // }
+    }
+    this.props.stopTestCaseExecution();
+  };
+
+  render = () => {
     return (
       <div
         className="mainPanel"
@@ -168,7 +261,9 @@ class TestCaseExecute extends Component {
                 ]
               }
             ]}
-            defaultPageSize={this.props.table.length}
+            defaultPageSize={
+              this.props.table.length >= 10 ? this.props.table.length : 10
+            }
             className="-striped -highlight testCaseExecuteTable"
           />
 
@@ -184,18 +279,7 @@ class TestCaseExecute extends Component {
           >
             <button
               className={this.handleButtonStatus("execute")}
-              onClick={() => {
-                this.startPlayback();
-                if (!this.props.testCaseExecuting)
-                  this.props.startTestCaseExecution();
-                if (
-                  this.state.currentTeststepsId <
-                  this.state.completeTestCase.length
-                )
-                  this.setState({
-                    currentTeststepsId: this.state.currentTeststepsId + 1
-                  });
-              }}
+              onClick={this.runTestCase}
             >
               Execute Test Case
             </button>
@@ -203,6 +287,7 @@ class TestCaseExecute extends Component {
               className={this.handleButtonStatus("stop")}
               onClick={() => {
                 this.props.stopTestCaseExecution();
+                this.setState({ stopClicked: true });
               }}
             >
               Stop Execution
@@ -227,7 +312,8 @@ const mapStateToProps = state => {
   return {
     table: state.table.table,
     testCaseExecution: state.testCaseExecution,
-    testCaseExecuting: state.testCaseExecution.testCaseExecuting
+    testCaseExecuting: state.testCaseExecution.testCaseExecuting,
+    stepDone: state.testCaseExecution.stepDone
   };
 };
 
@@ -237,6 +323,7 @@ export default connect(
     pressTtvKey,
     startTestCaseExecution,
     stopTestCaseExecution,
-    closeTestExecuteOverlay
+    closeTestExecuteOverlay,
+    executeStep
   }
 )(TestCaseExecute);

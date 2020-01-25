@@ -17,40 +17,14 @@ import { videoDimensions } from "../configs.js";
 import "../styling/expectedBehaviour.css";
 import "../styling/videoComponent.css";
 import { streamIp, streamCode, streamPort } from "../configs.js";
-
-const sleep = milliseconds => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-};
-
+import { remoteControlButtonMapping, sleep } from "../utils.js";
 class VideoStream extends Component {
   componentDidUpdate = () => {
     this.props.updateVideoSyncFunc(this.child.syncPlayer);
   };
 
   remoteControlClickHandler = key => {
-    var buttonPressed = "";
-    switch (key) {
-      case "home":
-      case "back":
-      case "up":
-      case "down":
-      case "right":
-      case "left":
-        buttonPressed = key;
-        break;
-      case "ok":
-        buttonPressed = "select";
-        break;
-      case "undo":
-        buttonPressed = "InstantReplay";
-        break;
-      case "star":
-        buttonPressed = "Info";
-        break;
-      default:
-        return;
-    }
-    this.props.pressTtvKey(buttonPressed);
+    this.props.pressTtvKey(remoteControlButtonMapping(key));
     sleep(500).then(() => this.props.syncPlayerFunc());
     sleep(500).then(() => this.props.syncPlayerFunc());
   };

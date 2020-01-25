@@ -32,26 +32,21 @@ export default class VideoComponent extends Component {
     if (prevProps.hidden !== this.props.hidden) {
       this.setState({ hidden: this.props.hidden });
     }
-    console.log("update");
     this.buildPlayer();
-    console.log(this.videoRef.current.readyState);
   };
 
   componentWillUnmount = () => {
-    console.log("unmount");
     this.player.destroy();
   };
 
   buildPlayer = () => {
     if (this.player) {
-      console.log("player exists");
       return;
     }
     this.buildActualPlayer();
   };
 
   buildActualPlayer = () => {
-    console.log("building player");
     this.player = flv.createPlayer({
       type: "flv",
       url: this.props.streamURL,
@@ -202,7 +197,6 @@ export default class VideoComponent extends Component {
                   setTimeout(() => {
                     this.setState({ flash: false });
                     this.props.screenshotHandler(frame.dataUri);
-                    console.log(frame.dataUri);
                   }, 80);
                 }}
                 className="camera icon large pointer_cursor"

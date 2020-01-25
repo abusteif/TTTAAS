@@ -7,8 +7,6 @@ import {
   selectStep,
   clickAction,
   clickCamera,
-  clickPreview,
-  updatePreview,
   clickEdit,
   updateSelection,
   expectedBehaviourSelectionChanged,
@@ -36,7 +34,6 @@ import {
 import { testCases } from "../static/mockData";
 import RemoteControlPopup from "./remoteControlPopup";
 import RemoteControlPanel from "./remoteControlPanel";
-import ExpectedBehaviourPreview from "./expectedBehaviourPicture";
 import Modal from "./modal";
 import Tooltip from "./tooltip";
 import EditExpectedBehaviourComponent from "./editExpectedBehaviourComponent";
@@ -58,9 +55,6 @@ class TestCaseTable extends Component {
   handleActionClicked = step => {
     this.props.clickAction(step);
   };
-  handlePreviewClicked = (step, previewLink) => {
-    this.props.clickPreview(step, previewLink);
-  };
 
   handleAddStep = () => {
     const stepNumber = this.props.table.length + 1;
@@ -69,23 +63,42 @@ class TestCaseTable extends Component {
       this.props.table[this.props.table.length - 1].action === "default"
     )
       return;
-    this.props.updateTestCaseTable([
-      ...this.props.table,
-      {
-        order: stepNumber,
-        action: "default",
-        delay: 1,
-        expectedBehaviour: {
-          image: "",
-          selection: {
-            top: 0,
-            left: 0,
-            width: 0,
-            height: 0
+
+    if (_.isEqual(this.props.table, [{}]))
+      this.props.updateTestCaseTable([
+        {
+          order: 1,
+          action: "default",
+          delay: 1,
+          expectedBehaviour: {
+            image: "",
+            selection: {
+              top: 0,
+              left: 0,
+              width: 0,
+              height: 0
+            }
           }
         }
-      }
-    ]);
+      ]);
+    else
+      this.props.updateTestCaseTable([
+        ...this.props.table,
+        {
+          order: stepNumber,
+          action: "default",
+          delay: 1,
+          expectedBehaviour: {
+            image: "",
+            selection: {
+              top: 0,
+              left: 0,
+              width: 0,
+              height: 0
+            }
+          }
+        }
+      ]);
   };
 
   handleRemoveButton = stepId => {
@@ -152,14 +165,13 @@ class TestCaseTable extends Component {
   handleTableButtonsDisplay = (buttonType, action, stepId, extraValue) => {
     switch (buttonType) {
       case "up":
-        return stepId != 1 && action != "default";
+        return stepId !== 1 && action !== "default";
       case "down":
-        return stepId != this.props.table.length;
+        return stepId !== this.props.table.length;
       case "duplicate":
-        return action != "default";
+        return action !== "default";
       case "remove":
         return this.props.table.length !== 1;
-      case "preview":
       case "edit":
       case "removeExpectedBehaviour":
         return extraValue;
@@ -167,22 +179,24 @@ class TestCaseTable extends Component {
   };
 
   getButtonStatus = buttonName => {
-    if (buttonName === "save" || buttonName === "discard")
-      return _.isEqual(this.props.table, this.props.initialTable) ||
-        !this.props.table[0].action ||
-        this.props.table[0].action === "default"
-        ? "disabled"
-        : "";
-    if (buttonName === "run") {
-      if (this.props.table.length === 1) {
-        if (
-          this.props.table[0].action === "default" ||
-          !this.props.table[0].action
-        )
-          return "disabled";
-      } else {
-        return "";
-      }
+    switch (buttonName) {
+      case "save":
+        console.log(_.isEqual(this.props.table, this.props.initialTable));
+        return _.isEqual(this.props.table, this.props.initialTable) ||
+          this.props.table[this.props.table.length - 1].action === "default"
+          ? "disabled"
+          : "";
+
+      case "discard":
+        return _.isEqual(this.props.table, this.props.initialTable) ||
+          this.props.table[0].action === "default"
+          ? "disabled"
+          : "";
+      case "run":
+        return _.isEqual(this.props.table, [{}]) ||
+          this.props.table[this.props.table.length - 1].action === "default"
+          ? "disabled"
+          : "";
     }
   };
 
@@ -202,7 +216,8 @@ class TestCaseTable extends Component {
       { testCase: postData },
       { "Content-Type": "application/json" }
     );
-    if (response.status === 201) {
+    console.log(response.status);
+    if (response.status === 200) {
       this.updateInitialTable();
     }
   };
@@ -270,41 +285,6 @@ class TestCaseTable extends Component {
           </td>
           <td>
             {this.handleTableButtonsDisplay(
-              "preview",
-              step.action,
-              step.order,
-              step.expectedBehaviour.image
-            ) && (
-              <i
-                id={`table_preview${step.order}`}
-                className={(() => {
-                  let previewClass =
-                    "file image outline icon large pointer_cursor ";
-
-                  previewClass =
-                    this.props.previewClicked == step.order
-                      ? previewClass + "previewHighlighted"
-                      : previewClass + "";
-                  return previewClass;
-                })()}
-                style={{ opacity: "0.9" }}
-                onClick={() => {
-                  this.handlePreviewClicked(
-                    step.order,
-                    step.expectedBehaviour.image
-                  );
-                  this.handleOnMouseLeave();
-                }}
-                onMouseOver={() => {
-                  this.handleOnMouseHover(
-                    `table_preview${step.order}`,
-                    "View current expected behaviour"
-                  );
-                }}
-                onMouseLeave={this.handleOnMouseLeave}
-              />
-            )}
-            {this.handleTableButtonsDisplay(
               "edit",
               step.action,
               step.order,
@@ -330,7 +310,7 @@ class TestCaseTable extends Component {
 
             <i
               id={`table_camera${step.order}`}
-              className={"camera icon large playback_started "}
+              className={"camera icon large pointer_cursor "}
               onClick={() => {
                 this.props.clickCamera(step.order);
                 this.props.showPicture(false);
@@ -354,7 +334,7 @@ class TestCaseTable extends Component {
             ) && (
               <i
                 id={`remove_expected_behaviour${step.order}`}
-                className="close icon large pointer_cursor"
+                className="times icon large pointer_cursor"
                 style={{ opacity: "0.9" }}
                 onClick={() => {
                   this.handleRemoveExpectedBehaviour(step.order);
@@ -532,24 +512,6 @@ class TestCaseTable extends Component {
                       </Modal>
                     )}
                   </span>
-                  {this.props.previewClicked && (
-                    <Modal
-                      anchorId="modal"
-                      closeModalHandler={() =>
-                        this.props.clickPreview(null, "")
-                      }
-                    >
-                      <ExpectedBehaviourPreview
-                        previewPic={
-                          this.props.table[this.props.selectedStep - 1]
-                            .expectedBehaviour.image
-                        }
-                        pictureLink={this.props.previewLink}
-                        top={this.props.selectedStepCoords.top}
-                        left={this.props.selectedStepCoords.left}
-                      />
-                    </Modal>
-                  )}
 
                   {this.props.editClicked && (
                     <Modal
@@ -657,10 +619,8 @@ const mapStateToProps = state => {
     selectedStepCoords: state.table.selectedStepCoords,
     actionClicked: state.table.actionClicked,
     cameraClicked: state.table.cameraClicked,
-    previewClicked: state.table.previewClicked,
     expectedBehaviourEdited: state.table.expectedBehaviourEdited,
     editClicked: state.table.editClicked,
-    previewLink: state.table.previewLink,
     tooltip: state.tooltip,
     video: state.videoStream,
     testCaseExecution: state.testCaseExecution
@@ -674,8 +634,6 @@ export default connect(
     selectStep,
     clickAction,
     clickCamera,
-    clickPreview,
-    updatePreview,
     showVideoStream,
     updateTooltipFunc,
     showToolTip,

@@ -97,8 +97,6 @@ export const clickEdit = status => {
 };
 
 export const updateDelay = (stepNumber, delay) => {
-  console.log(delay);
-  console.log(stepNumber);
   return {
     type: "UPDATE_DELAY",
     payload: {
@@ -112,5 +110,11 @@ export const expectedBehaviourSelectionChanged = status => {
   return {
     type: "EXPECTED_BEHAVIOUR_CHANGED",
     payload: status
+  };
+};
+
+export const resetTable = () => {
+  return {
+    type: "RESET_tABLE"
   };
 };

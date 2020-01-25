@@ -27,3 +27,29 @@
   position: relative;
   top: 300px;
 }
+
+.greenTick:before {
+  font-family: FontAwesome;
+  color: green;
+  padding-left: 20px;
+  content: "\f00c";
+  font-size: 20px;
+}
+
+.redCross:before {
+  font-family: FontAwesome;
+  color: red;
+  padding-left: 20px;
+  content: "\f00d";
+  font-size: 20px;
+}
+
+.hourglass:before {
+  font-style: normal;
+
+  font-family: FontAwesome;
+  color: grey;
+  padding-left: 20px;
+  content: "\f252";
+  font-size: 20px;
+}

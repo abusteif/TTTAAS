@@ -1,6 +1,7 @@
 const INITIAL_TEST_EXECUTE_STATE = {
   testCaseExecuting: false,
-  stepExecuted: {}
+  testExecuteOverlayOpen: false,
+  stepDone: true
 };
 
 export const testCaseExecute = (state = INITIAL_TEST_EXECUTE_STATE, action) => {
