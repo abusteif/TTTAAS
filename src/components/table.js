@@ -22,8 +22,6 @@ import {
 } from "../actions/tooltip";
 
 import { showVideoStream, showPicture } from "../actions/videoStream";
-import VideoComponent from "./videoComponent";
-
 import {
   startTestCaseExecution,
   stopTestCaseExecution,
@@ -31,7 +29,6 @@ import {
   closeTestExecuteOverlay
 } from "../actions/testCaseExecute";
 
-import { testCases } from "../static/mockData";
 import RemoteControlPopup from "./remoteControlPopup";
 import RemoteControlPanel from "./remoteControlPanel";
 import Modal from "./modal";
@@ -175,6 +172,9 @@ class TestCaseTable extends Component {
       case "edit":
       case "removeExpectedBehaviour":
         return extraValue;
+
+      default:
+        return;
     }
   };
 

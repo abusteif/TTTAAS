@@ -94,14 +94,12 @@ class TestCase(Resource):
             json_data = json.load(f)
 
         data = request.get_json()
-        print(type(data))
         item = next(filter(lambda x: x['id'] == guid, json_data["testCases"]), None)
         if item is None:
             json_data["testCases"].append(data["testCase"])
             with open(database_file, "w") as db_f:
                 json.dump(json_data, db_f)
         else:
-            print(json_data["testCases"][2])
             for i in range(json_data["testCases"].__len__()):
                 if json_data["testCases"][i]['id'] == guid:
                     json_data["testCases"][i] = {**json_data["testCases"][i], **data["testCase"]}
@@ -128,6 +126,45 @@ class TestCase(Resource):
         with open(database_file, "w") as db_f:
             json.dump(new_json_data, db_f)
         return {}, 204
+
+
+class Dockers(Resource):
+    def get(self, guid):
+        with open(database_file, "r") as f:
+            json_data = json.load(f)
+
+        return {'dockers': list(filter(lambda x: x['parentId'] == guid, json_data["dockers"]))}
+
+
+class Docker(Resource):
+    def put(self, guid):
+        with open(database_file, "r") as f:
+            json_data = json.load(f)
+
+        data = request.get_json()
+        item = next(filter(lambda x: x['id'] == guid, json_data["dockers"]), None)
+
+        if item is None:
+            json_data["dockers"].append(data["docker"])
+            with open(database_file, "w") as db_f:
+                json.dump(json_data, db_f)
+        else:
+            for i in range(json_data["dockers"].__len__()):
+                if json_data["dockers"][i]['id'] == guid:
+                    print("here")
+                    print(guid)
+                    json_data["dockers"][i] = {**json_data["dockers"][i], **data["docker"]}
+                    # json_data["testCases"][i] = data["testCase"]
+                    with open(database_file, "w") as db_f:
+                        json.dump(json_data, db_f)
+
+            return data, 200
+
+    def get(self, guid):
+        with open(database_file, "r") as f:
+            json_data = json.load(f)
+
+        return {'docker': next(filter(lambda x: x['id'] == guid, json_data["dockers"]), None)}
 
 class TestSuites(Resource):
 
@@ -217,6 +254,9 @@ api.add_resource(TestCase, '/test-case/<string:guid>')
 
 api.add_resource(TestSuites, '/test-suites/<string:guid>')
 api.add_resource(TestSuite, '/test-suite/<string:guid>')
+
+api.add_resource(Dockers, '/dockers/<string:guid>')
+api.add_resource(Docker, '/docker/<string:guid>')
 
 api.add_resource(Apps, '/apps')
 

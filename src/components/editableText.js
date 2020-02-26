@@ -28,24 +28,29 @@ class EditText extends Component {
   handleSubmit = e => {
     //console.log(this.props.selectedNode);
     console.log(this.state.originalState);
+    console.log(this.state.textValue);
     if (
-      this.props.onChange(
-        e.target.value,
-        this.props.nodeParams.node,
-        this.props.nodeParams.path,
-        this.props.nodeParams.getNodeKey
-      )
+      this.state.originalState === this.state.textValue ||
+      this.state.textValue === ""
     ) {
+      this.setState({
+        textValue: this.state.originalState,
+        showText: !this.state.showText
+      });
+      return;
+    }
+    if (this.props.onChange(e.target.value, this.props.params) === true) {
       this.setState({
         textValue: e.target.value,
         showText: !this.state.showText,
         originalState: e.target.value
       });
     } else {
-      this.setState({ textValue: this.state.originalState });
+      this.setState({
+        textValue: this.state.originalState,
+        showText: !this.state.showText
+      });
     }
-    // console.log(this.props.selectedNode);
-    // this.props.updateNodeName("testingnewname", this.props.selectedNode, this.props.siblings)
   };
 
   handleChange = e => {
@@ -58,7 +63,9 @@ class EditText extends Component {
         {this.state.showText && (
           <input
             ref={input => input && input.focus()}
-            style={{ width: `${this.state.textValue.length * 8}px` }}
+            style={{
+              width: `${this.state.textValue.length * this.props.scaleFactor}px`
+            }}
             className=" noBorders"
             onBlur={this.handleSubmit}
             value={this.state.textValue}

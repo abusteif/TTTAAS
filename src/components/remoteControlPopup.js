@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Popup from "reactjs-popup";
 import { connect } from "react-redux";
-import RemoteControlPanel from "./remoteControlPanel";
 import "../styling/remoteControlPanel.css";
 import "../styling/remoteIcon.css";
 import "../styling/tableButtons.css";

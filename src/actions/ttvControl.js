@@ -1,4 +1,3 @@
-import { ttvIp, ttvPort } from "../configs.js";
 import ttvControlApi from "../apis/ttvControlApi.js";
 
 export const pressTtvKey = key => async dispatch => {

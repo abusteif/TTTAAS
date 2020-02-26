@@ -1,4 +1,3 @@
-import { testCases } from "../static/mockData";
 import { videoDimensions, videoScaling } from "../configs.js";
 
 import _ from "lodash";

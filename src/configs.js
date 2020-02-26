@@ -13,3 +13,5 @@ export const ttvPort = "8060";
 export const streamIp = "192.168.0.196";
 export const streamPort = "8000";
 export const streamCode = "teststream";
+
+export const appId = "3d525bca-d8a6-4fec-a8f2-26ff3d08daaf";

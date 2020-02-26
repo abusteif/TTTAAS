@@ -1,0 +1,33 @@
+.firstFourth,
+.secondFourth,
+.thirdFourth,
+.FourthFourth {
+  background-color: inherit;
+  border: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  position: absolute;
+  height: 90%;
+  top: 10%;
+}
+
+.firstFourth {
+  overflow: auto;
+  width: 10%;
+}
+
+.secondFourth {
+  left: 10%;
+  width: 15%;
+}
+
+.thirdFourth {
+  left: 25%;
+  width: 40%;
+}
+
+.fourthFourth {
+  left: 61.6%;
+  width: 33.4%;
+}
